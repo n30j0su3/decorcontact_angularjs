@@ -1,0 +1,22 @@
+.not_found{
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 4em;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Glen-Jan-EchoesSans';
+  h1{
+    font-size: 3em;
+    color: black;
+    padding: 1em 0;
+  }
+  h2{
+    font-size: 2em;
+    color: black;
+    padding: .5em 0;
+  }
+  p{
+    font-size: 1.5em;
+    padding: .2em 0;
+  }
+}

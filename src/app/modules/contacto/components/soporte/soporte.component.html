@@ -1,0 +1,39 @@
+<p>soporte works!</p>
+<div class="container col-md-12">
+  <div>
+      <button (click)="getAllProducts()" class="btn btn-info">Get all Clients</button>
+  </div>
+  <div>
+      <button (click)="addProduct()" class="btn btn-info">Add clients - DONT USE YET</button>
+  </div>
+<h2>All Clients</h2>
+<div class="table-responsive table-container">
+  <table class="table table-dark table-hover table-striped">
+    <thead class="thead-light">
+      <tr>
+        <th>Nombre</th>
+        <th>CC</th>
+        <!--<th>Price($)</th>-->
+        <th>Email</th>
+        <th>Celular</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of products">
+
+        <td>{{cliente.nombre}}</td>
+        <td>{{cliente.documento_cc}}</td>
+        <!--<td>{{cliente.price | currency : "USD" : true}}</td>-->
+        <td>{{cliente.email}}</td>
+        <td>{{cliente.celular}}</td>
+        <td>
+          <span>DONT USE YET</span>
+          <button (click)="deleteProduct(cliente)" class="btn btn-info"> Delete</button>
+          <button (click)="updateProduct(cliente)" style="margin-left: 20px;" class="btn btn-info"> Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div>

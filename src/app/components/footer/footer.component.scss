@@ -1,0 +1,47 @@
+$main_gray: #565556;
+$main_darkgray: #2C2C2B;
+:root{
+  --main-gray-color: #565556;
+}
+.footer_contain{
+  background-color: $main_darkgray;
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 1em 0;
+  justify-content: space-around;
+  align-content: center;
+    .section{
+      display: flex;
+      flex-flow: column nowrap;
+        h1{
+          padding: 1em 0;
+          font-size: 1.4em;
+          font-weight: 300;
+          color:#fff;
+          font-family: 'Glen-Jan-EchoesSans';
+        }
+        ul{
+          list-style: none;
+          line-height: 1.3;
+          li a{
+            color: #fff;
+            text-decoration: none;
+          }
+        }
+    }
+}
+.copyright{
+  background-color: $main_gray;
+  display: flex;
+  flex-flow: row nowrap;
+  padding: .2em;
+  justify-content: space-around;
+  align-content: center;
+  .text_copyright{
+    color: #fff;
+    align-self: center;
+  }
+  .img_copyright{
+    width: 50px;
+  }
+}

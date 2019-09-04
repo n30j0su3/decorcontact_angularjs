@@ -1,0 +1,30 @@
+$main_darkgray: #2C2C2B;
+/****************
+Navbar Style
+****************/
+
+.nav_container {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    background: $main_darkgray;
+}
+
+.nav_menus {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 70%;
+}
+ul li{
+    padding: 1em;
+    font-size: 1.1em;
+}
+.links{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+.top_links{display:none;}
+.top_links .links{justify-content: center;}
