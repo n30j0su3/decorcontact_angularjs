@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { SelectBrandComponent } from './components/select-brand/select-brand.component';
-import { PQRSComponent } from './modules/contacto/components/pqrs/pqrs.component';
-import { SoporteComponent } from './modules/contacto/components/soporte/soporte.component';
+import { NotFoundComponent } from './components/default/not-found/not-found.component';
+import { SelectBrandComponent } from './components/default/select-brand/select-brand.component';
+import { PQRSComponent } from './components/contacto/pqrs/pqrs.component';
+import { SoporteComponent } from './components/contacto/soporte/soporte.component';
+import { ContactoModule } from './components/contacto/contacto.module';
 import { UserService } from './services/provider';
 const routes: Routes = [
   {
@@ -26,8 +27,9 @@ const routes: Routes = [
     data : {some_data : 'some value', test_data : UserService}
   },
   {
-    path: 'not-found',
-    component: NotFoundComponent
+    path: 'klpcomercial',
+    component: ContactoModule,
+    data : {some_data : 'YO-SOY-URL-KLP'}
   },
   {
     path: '**',

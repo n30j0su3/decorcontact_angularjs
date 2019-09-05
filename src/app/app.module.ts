@@ -1,15 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ContactoModule } from './modules/contacto/contacto.module';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { SelectBrandComponent } from './components/select-brand/select-brand.component';
+// Import the contact module
+import { ContactoModule } from './components/contacto/contacto.module';
+// Import the basics components
+import { HeaderComponent } from './components/default/header/header.component';
+import { FooterComponent } from './components/default/footer/footer.component';
+import { NotFoundComponent } from './components/default/not-found/not-found.component';
+import { SelectBrandComponent } from './components/default/select-brand/select-brand.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
 
 // Módulo de cliente para usar http
 import { HttpClientModule } from '@angular/common/http';
