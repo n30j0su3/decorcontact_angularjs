@@ -4,13 +4,15 @@ import { CommonModule } from '@angular/common';
 import { PQRSComponent } from './pqrs/pqrs.component';
 import { SoporteComponent } from './soporte/soporte.component';
 import { HomeComponent } from './home/home.component';
+import { ContactRoutingModule } from './contacto-routing.module';
 
 @NgModule({
   declarations: [HomeComponent, PQRSComponent, SoporteComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    ContactRoutingModule
   ],
-  // entryComponents: [HomeComponent],
+  entryComponents: [HomeComponent],
   exports: [HomeComponent, PQRSComponent, SoporteComponent]
 })
 export class ContactoModule { }

@@ -4,7 +4,7 @@ import { NotFoundComponent } from './components/default/not-found/not-found.comp
 import { SelectBrandComponent } from './components/default/select-brand/select-brand.component';
 import { PQRSComponent } from './components/contacto/pqrs/pqrs.component';
 import { SoporteComponent } from './components/contacto/soporte/soporte.component';
-import { ContactoModule } from './components/contacto/contacto.module';
+// import { ContactoModule } from './components/contacto/contacto.module';
 import { UserService } from './services/provider';
 const routes: Routes = [
   {
@@ -26,10 +26,14 @@ const routes: Routes = [
     component: SoporteComponent,
     data : {some_data : 'some value', test_data : UserService}
   },
-  {
+  /*{
     path: 'klpcomercial',
     component: ContactoModule,
     data : {some_data : 'YO-SOY-URL-KLP'}
+  },*/
+  { path: 'klpcomercial',
+  loadChildren: () => import('./components/contacto/contacto.module').then(mod => mod.ContactoModule),
+  data : {some_data : 'some value'}
   },
   {
     path: '**',
