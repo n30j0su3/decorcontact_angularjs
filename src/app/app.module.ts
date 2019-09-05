@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 // Módulo de servicios
 import { Clientes } from './models/clientes';
 import { TestService } from './services/provider';
+// import { SelectFormComponent } from './components/contacto/select-form/select-form.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { TestService } from './services/provider';
     FooterComponent,
     NotFoundComponent,
     SelectBrandComponent
+    // SelectFormComponent
   ],
   imports: [
     BrowserModule,

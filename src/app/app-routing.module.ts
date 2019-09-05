@@ -19,25 +19,28 @@ const routes: Routes = [
   {
     path: 'decorceramica',
     component: PQRSComponent,
-    data : {some_data : 'some value'}
+    data : {data_brand : 'decorceramica'}
   },
   {
     path: 'novacasa',
     component: SoporteComponent,
-    data : {some_data : 'some value', test_data : UserService}
+    data : {data_brand : 'novacasa', test_data : UserService}
   },
   /*{
     path: 'klpcomercial',
     component: ContactoModule,
-    data : {some_data : 'YO-SOY-URL-KLP'}
+    data : {data_brand : 'klp'}
   },*/
-  { path: 'klpcomercial',
-  loadChildren: () => import('./components/contacto/contacto.module').then(mod => mod.ContactoModule),
-  data : {some_data : 'some value'}
+  { path: 'klpcomercial', data : {data_brand : 'klp'},
+  loadChildren: () => import('./components/contacto/contacto.module').then(mod => mod.ContactoModule)
   },
   {
     path: '**',
     redirectTo: 'not-found'
+  },
+  {
+    path: 'not-found',
+    component: NotFoundComponent
   }
 ];
 
