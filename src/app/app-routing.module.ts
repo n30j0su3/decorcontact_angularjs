@@ -16,21 +16,12 @@ const routes: Routes = [
     redirectTo: '/home',
     pathMatch: 'full'
   },
-  {
-    path: 'decorceramica',
-    component: PQRSComponent,
-    data : {data_brand : 'decorceramica'}
+  { path: 'decorceramica', data : {data_brand : 'decorceramica'},
+  loadChildren: () => import('./components/contacto/contacto.module').then(mod => mod.ContactoModule)
   },
-  {
-    path: 'novacasa',
-    component: SoporteComponent,
-    data : {data_brand : 'novacasa', test_data : UserService}
+  { path: 'novacasa', data : {data_brand : 'novacasa'},
+  loadChildren: () => import('./components/contacto/contacto.module').then(mod => mod.ContactoModule)
   },
-  /*{
-    path: 'klpcomercial',
-    component: ContactoModule,
-    data : {data_brand : 'klp'}
-  },*/
   { path: 'klpcomercial', data : {data_brand : 'klp'},
   loadChildren: () => import('./components/contacto/contacto.module').then(mod => mod.ContactoModule)
   },
@@ -42,6 +33,21 @@ const routes: Routes = [
     path: 'not-found',
     component: NotFoundComponent
   }
+  /*{
+    path: 'decorceramica',
+    component: PQRSComponent,
+    data : {data_brand : 'decorceramica'}
+  },
+  {
+    path: 'novacasa',
+    component: SoporteComponent,
+    data : {data_brand : 'novacasa', test_data : UserService}
+  },
+  {
+    path: 'klpcomercial',
+    component: ContactoModule,
+    data : {data_brand : 'klp'}
+  },*/
 ];
 
 @NgModule({

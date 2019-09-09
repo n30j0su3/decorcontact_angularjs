@@ -9,8 +9,15 @@ import { HeaderComponent } from './components/default/header/header.component';
 import { FooterComponent } from './components/default/footer/footer.component';
 import { NotFoundComponent } from './components/default/not-found/not-found.component';
 import { SelectBrandComponent } from './components/default/select-brand/select-brand.component';
-import { ReactiveFormsModule } from '@angular/forms';
-
+// Módulo de formularios
+// import { ReactiveFormsModule } from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+// Módulo de formularios
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// Animaciones & material
+import {MatButtonModule, MatCheckboxModule, MatToolbarModule, MatCardModule,
+  MatExpansionModule, MatDatepickerModule, MatInputModule, MatTabsModule,
+  MatTooltipModule, MatFormFieldModule, MatMenuModule, MatSnackBarModule} from '@angular/material';
 // Módulo de cliente para usar http
 import { HttpClientModule } from '@angular/common/http';
 // Módulo de servicios
@@ -32,8 +39,16 @@ import { TestService } from './services/provider';
     AppRoutingModule,
     ContactoModule,
     HttpClientModule,
-    ReactiveFormsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule, MatCheckboxModule, MatToolbarModule, MatCardModule,
+    MatExpansionModule, MatDatepickerModule, MatInputModule, MatTabsModule,
+    MatTooltipModule, MatFormFieldModule, MatMenuModule, MatSnackBarModule
   ],
+  exports: [BrowserAnimationsModule, MatButtonModule, MatCheckboxModule, MatToolbarModule, MatCardModule,
+    MatExpansionModule, MatDatepickerModule, MatInputModule, MatTabsModule,
+    MatTooltipModule, MatFormFieldModule, MatMenuModule, MatSnackBarModule],
   providers: [TestService],
   bootstrap: [AppComponent]
 })

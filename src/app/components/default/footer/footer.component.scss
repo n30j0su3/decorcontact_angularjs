@@ -45,3 +45,13 @@ $main_darkgray: #2C2C2B;
     width: 50px;
   }
 }
+@media (max-width: 600px) {
+  .footer_contain{
+    padding: 2em 1em;
+    .section{
+    }
+  }
+  .copyright{
+    padding: 1em;
+  }
+}

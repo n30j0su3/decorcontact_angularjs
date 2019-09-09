@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   logo_brand="assets/images/logo_grupo.jpg";
-  constructor() { }
+  constructor(
+    private location: Location
+  ) {}
 
+  goBack() {
+    this.location.back();
+  }
   ngOnInit() {
   }
 

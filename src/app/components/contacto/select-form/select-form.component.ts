@@ -10,6 +10,10 @@ export class SelectFormComponent implements OnInit, OnDestroy {
   id: any;
 
   constructor(private route: ActivatedRoute) {
+    this.route.data.subscribe(v => {
+      console.log(v.data_brand);
+      // return v.data_brand;
+    });
     /*route.params.subscribe(routeParam => {
       console.log(routeParam);
       console.log(route.params);
@@ -22,15 +26,13 @@ export class SelectFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
   }
   ngOnDestroy() {
-    // this.route.data.unsubscribe();
+    // this.id.unsubscribe();
   }
   getDataBrand() {
-    this.route.data.subscribe(v => {
-      JSON.stringify(v.data_brand);
-      // console.log(v.data_brand);
+    /*this.id = this.route.data.subscribe(v => {
       console.log(v.data_brand);
-      // console.log(JSON.stringify(v.data_brand));
-    });
+      console.log(JSON.stringify(v.data_brand));
+      });*/
   }
 
 }

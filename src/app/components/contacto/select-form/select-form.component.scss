@@ -5,7 +5,7 @@
 }
 .container_service_brand{
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   justify-content: space-evenly;
   padding: 1em;
   height: 100%;
@@ -13,16 +13,29 @@
   align-items: center;
     div{
       display: flex;
-      flex: 0 1 auto;
+      flex: 0 1 20em;
+      flex-flow: column;
+      align-items: center;
       justify-content: center;
+      h3{
+        font-family: 'Glen-Jan-EchoesSans';
+        text-align: center;
+      }
       img{
         width: 100%;
       }
-    }
+      img:hover{
+        transform: scale(1.1);
+        transition: ease .1s;
+        overflow: hidden;
+      }
+    }/*
     div:hover{
       transform: scale(1.1);
       transition: ease .1s;
-    }
+      overflow: hidden;
+    }*/
+
     /*.brand_decor{display:flex;}
     .brand_nova{display:flex;}
     .brand_klp{display:flex;}*/

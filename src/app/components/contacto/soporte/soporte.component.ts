@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Clientes } from 'src/app/models/clientes';
 import { TestService } from 'src/app/services/provider';
+import { ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-soporte',
@@ -16,7 +17,11 @@ export class SoporteComponent implements OnInit {
   weather: any;
   stri: string;*/
 
-  constructor(private client: TestService, private router: Router) {
+  constructor(private client: TestService, private router: Router, private route: ActivatedRoute) {
+    this.route.data.subscribe(v => {
+      console.log(v.data_brand);
+      // return v.data_brand;
+    });
     // this.equipos = this.client;
     // this.client.getUsers();
     // console.log(this.equipos);

@@ -11,7 +11,12 @@ import { Router, RoutesRecognized, ActivatedRoute} from '@angular/router';
 export class PQRSComponent implements OnInit, OnDestroy {
   private routeData;
   private routeDataex;
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute) {
+    this.route.data.subscribe(v => {
+      console.log(v.data_brand);
+      // return v.data_brand;
+    });
+   }
 
   ngOnInit() {
     this.router.events.subscribe((data) => {
