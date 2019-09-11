@@ -3,7 +3,7 @@ export class Rotura {
   tipo_documento_compra : String;
   num_pedido : Number;
   cliente : Number;
-  codigo_producto : String;
+  codigo_producto : any;
   descripcion_producto : String;
   cantidad_comprada : Number;
   cantidad_rotura : Number;

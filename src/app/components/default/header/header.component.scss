@@ -5,8 +5,7 @@ Navbar Style
 
 .nav_container {
     display: flex;
-    flex-flow: row nowrap;
-    width: 100%;
+    flex-flow: row wrap;
     align-items: center;
     justify-content: space-around;
     background: $main_darkgray;
@@ -28,3 +27,9 @@ ul li{
 }
 .top_links{display:none;}
 .top_links .links{justify-content: center;}
+@media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)  {
+  ul li{
+    padding: 0em;
+    font-size: .8em;
+  }
+}

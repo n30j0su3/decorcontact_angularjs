@@ -12,12 +12,6 @@ import { SelectBrandComponent } from './components/default/select-brand/select-b
 // Módulo de formularios
 // import { ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-// Módulo de formularios
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// Animaciones & material
-import {MatButtonModule, MatCheckboxModule, MatToolbarModule, MatCardModule,
-  MatExpansionModule, MatDatepickerModule, MatInputModule, MatTabsModule,
-  MatTooltipModule, MatFormFieldModule, MatMenuModule, MatSnackBarModule} from '@angular/material';
 // Módulo de cliente para usar http
 import { HttpClientModule } from '@angular/common/http';
 // Módulo de servicios
@@ -39,16 +33,9 @@ import { TestService } from './services/provider';
     AppRoutingModule,
     ContactoModule,
     HttpClientModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatButtonModule, MatCheckboxModule, MatToolbarModule, MatCardModule,
-    MatExpansionModule, MatDatepickerModule, MatInputModule, MatTabsModule,
-    MatTooltipModule, MatFormFieldModule, MatMenuModule, MatSnackBarModule
+    BrowserAnimationsModule
   ],
-  exports: [BrowserAnimationsModule, MatButtonModule, MatCheckboxModule, MatToolbarModule, MatCardModule,
-    MatExpansionModule, MatDatepickerModule, MatInputModule, MatTabsModule,
-    MatTooltipModule, MatFormFieldModule, MatMenuModule, MatSnackBarModule],
+  exports: [],
   providers: [TestService],
   bootstrap: [AppComponent]
 })

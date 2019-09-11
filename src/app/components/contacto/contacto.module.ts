@@ -7,13 +7,15 @@ import { SelectFormComponent } from './select-form/select-form.component';
 import { ContactRoutingModule } from './contacto-routing.module';
 import { NovedadesComponent } from './novedades/novedades.component';
 import { RoturaComponent } from './rotura/rotura.component';
+// Import the form.io module
+import { FormioModule } from 'angular-formio';
 
 // Módulo de formularios
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // Animaciones & material
 import {MatButtonModule, MatCheckboxModule, MatToolbarModule, MatCardModule,
   MatExpansionModule, MatDatepickerModule, MatInputModule, MatTabsModule,
-  MatTooltipModule, MatFormFieldModule, MatMenuModule, MatSnackBarModule} from '@angular/material';
+  MatTooltipModule, MatFormFieldModule, MatMenuModule, MatSnackBarModule, MatRadioModule} from '@angular/material';
 
 // Example modules https://stackblitz.com/angular/bnookxvvvmr?file=src%2Fapp%2Fapp-routing.module.ts
 
@@ -26,12 +28,14 @@ import {MatButtonModule, MatCheckboxModule, MatToolbarModule, MatCardModule,
     ReactiveFormsModule,
     MatButtonModule, MatCheckboxModule, MatToolbarModule, MatCardModule,
     MatExpansionModule, MatDatepickerModule, MatInputModule, MatTabsModule,
-    MatTooltipModule, MatFormFieldModule, MatMenuModule, MatSnackBarModule
+    MatTooltipModule, MatFormFieldModule, MatMenuModule, MatSnackBarModule, MatRadioModule,
+    FormioModule
   ],
   entryComponents: [SelectFormComponent],
   exports: [SelectFormComponent, PQRSComponent, SoporteComponent, NovedadesComponent, RoturaComponent,
     MatButtonModule, MatCheckboxModule, MatToolbarModule, MatCardModule,
     MatExpansionModule, MatDatepickerModule, MatInputModule, MatTabsModule,
-    MatTooltipModule, MatFormFieldModule, MatMenuModule, MatSnackBarModule]
+    MatTooltipModule, MatFormFieldModule, MatMenuModule, MatSnackBarModule, MatRadioModule,
+    FormioModule]
 })
 export class ContactoModule { }
