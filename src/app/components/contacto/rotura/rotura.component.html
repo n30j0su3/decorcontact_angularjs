@@ -60,7 +60,7 @@
           <div class="child1">
             <mat-form-field>
               <mat-label>Documento de compra:</mat-label>
-              <select matNativeControl formControlName="cliente">
+              <select matNativeControl formControlName="tipo_documento_compra">
                 <option value="num_entrega">Número de entrega</option>
                 <option value="num_factura">Número de factura</option>
                 <!--<option value="mercedes">Mercedes</option>
@@ -144,7 +144,7 @@
         <div class="third_part">
           <p class="space_down">Como deseas que sea compensada tu rotura? </p>
           <p class="subrayado">Escoge una opción:</p>
-          <mat-radio-group class="example-radio-group" formControlName="observaciones" aria-label="Select an option">
+          <mat-radio-group class="example-radio-group" formControlName="forma_compensacion" aria-label="Select an option">
             <mat-radio-button value="reposicion">Reposición del producto</mat-radio-button>
             <mat-radio-button value="nota-credito">Nota Credito</mat-radio-button>
           </mat-radio-group>

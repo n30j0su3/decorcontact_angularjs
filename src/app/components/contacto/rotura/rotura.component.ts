@@ -55,5 +55,4 @@ export class RoturaComponent implements OnInit {
   onFormSubmit(form: NgForm){
     console.log(form);
   }
-
 }
