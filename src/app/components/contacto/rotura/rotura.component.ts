@@ -24,7 +24,7 @@ export class RoturaComponent implements OnInit {
     { id: 2, name: 'Guerra Cortez', age: 45, companyName: 'Insectus', country: 'USA', city: 'San Francisco' },
   ];*/
 
-  constructor(private route: ActivatedRoute, private fb: FormBuilder, private roturaSer: RoturaService,) {
+  constructor(private route: ActivatedRoute, private fb: FormBuilder, private roturaSer: RoturaService) {
     this.route.data.subscribe(v => {
       this.brand = v.data_brand;
       console.log(v.data_brand);
@@ -50,7 +50,8 @@ export class RoturaComponent implements OnInit {
       forma_compensacion: ['', Validators.required],
       direccion_compensacion: [''],
       ciudad: [''],
-      empresa: ['']
+      empresa: [''],
+      autorizacion: ['', Validators.required]
     });
 
   }

@@ -1,39 +1,106 @@
-<p>soporte works!</p>
-<div class="container col-md-12">
-  <div>
-      <button (click)="getAllProducts()" class="btn btn-info">Get all Clients</button>
-  </div>
-  <div>
-      <button (click)="addProduct()" class="btn btn-info">Add clients - DONT USE YET</button>
-  </div>
-<h2>All Clients</h2>
-<div class="table-responsive table-container">
-  <table class="table table-dark table-hover table-striped">
-    <thead class="thead-light">
-      <tr>
-        <th>Nombre</th>
-        <th>CC</th>
-        <!--<th>Price($)</th>-->
-        <th>Email</th>
-        <th>Celular</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let cliente of products">
+<!-- Main Toolbar of an App -->
+<mat-toolbar color="black">
+  <span>--- Prototype by N30j0su3 --- </span>
+  <span>{{brand}}</span>
+  <span class="demo-toolbar"></span>
+  <!--<button mat-button href="https://github.com/n30j0su3">Go To My projects</button>-->
+</mat-toolbar>
+<!-- Card container that binds all togather -->
+<mat-card>
+  <!-- Title of an Card -->
+  <mat-card-title>
+    Solicitud de Servicio Técnico
+  </mat-card-title>
 
-        <td>{{cliente.nombre}}</td>
-        <td>{{cliente.documento_cc}}</td>
-        <!--<td>{{cliente.price | currency : "USD" : true}}</td>-->
-        <td>{{cliente.email}}</td>
-        <td>{{cliente.celular}}</td>
-        <td>
-          <span>DONT USE YET</span>
-          <button (click)="deleteProduct(cliente)" class="btn btn-info"> Delete</button>
-          <button (click)="updateProduct(cliente)" style="margin-left: 20px;" class="btn btn-info"> Edit</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <!-- Actual content starts from here -->
+  <mat-card-content>
+    <div class="container">
+      <h3>Aquí podras obtener asesoria técnica,  o solicitar una garantia sobre productos recibidos.</h3>
+      <span>Para eso, ayudanos con la siguiente información:</span><br>
+      <form [formGroup]="user" class="form_container" (ngSubmit)="onSubmit()">
+      <!--<form [formGroup]="user" class="form_container" (ngSubmit)="onFormSubmit(user.value)">-->
+        <!--<form novalidate (ngSubmit)="onSubmit()" [formGroup]="user"]>-->
+        <div class="first_part">
+          <div class="child1">
+            <mat-form-field class="demo-full-width">
+              <input matInput formControlName="cliente" placeholder="Número documento cliente">
+            </mat-form-field>
+            <mat-error>
+              <span *ngIf="!user.get('cliente').valid && user.get('cliente').touched">Ingrese un # de cédula
+                valido</span>
+            </mat-error>
+          </div>
+          <div class="child1">
+            <mat-form-field>
+              <mat-label>Documento de compra:</mat-label>
+              <select matNativeControl formControlName="tipo_documento_compra">
+                <option value="num_pedido">Número de pedido</option>
+                <option value="num_entrega">Número de entrega</option>
+                <option value="num_factura">Número de factura</option>
+                <!--<option value="mercedes">Mercedes</option>
+              <option value="audi">Audi</option>-->
+              </select>
+            </mat-form-field>
+            <mat-error>
+              <span
+                *ngIf="!user.get('tipo_documento_compra').valid && user.get('tipo_documento_compra').touched">Seleccione
+                un tipo de documento</span>
+            </mat-error>
+            <mat-form-field class="demo-full-width">
+              <input matInput formControlName="num_pedido" placeholder="Número de documento">
+            </mat-form-field>
+            <mat-error>
+              <span *ngIf="!user.get('num_pedido').valid && user.get('num_pedido').touched">Ingrese un número de
+                documento valido</span>
+            </mat-error>
+          </div>
+        </div>
+        <div class="second_part">
+          <p class="space_down">Cuentanos tus inquietudes o detalles de la situación presentada con el  producto:</p>
+          <span class="cursiva">Puedes ingresar varios items separando con comas la información </span>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Descripción Producto</th>
+                <th>Inquietud o Situación presentada</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <mat-form-field class="demo-full-width">
+                    <input matInput formControlName="codigo_producto" placeholder="">
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field class="demo-full-width">
+                    <input matInput formControlName="descripcion_producto" placeholder="">
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field class="demo-full-width">
+                    <input matInput formControlName="observaciones" placeholder="">
+                  </mat-form-field>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="third_part">
+          <p class="space_down">Ayudanos a incluir fotos o videos donde se vea (n) las novedad (es), esto nos ayudará mucho a entender y asi poder darte un mejor servicio-</p>
+        </div>
+        <div class="fourth_part">
+          <mat-checkbox class="example-margin" id="mat-checkbox-1" formControlName="autorizacion">
+            <label for="mat-checkbox-1">
+              Autorizo a GRUPO DECOR S.A. para el tratamiento de datos personales, para fines publicitarios y comerciales, relacionados con nuestros productos y servicios, a través de medios electrónicos y físicos.<a href="https://www.decorceramica.com/terminos-y-condiciones/" target="_blank">Términos y condiciones</a>.
+            </label>
+          </mat-checkbox>
+        </div>
+        <button type="submit" [disabled]="!user.valid">Enviar</button>
 
-</div>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>
+

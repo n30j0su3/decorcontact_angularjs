@@ -5,11 +5,8 @@ import { Observable } from 'rxjs';
 
 // import 'rxjs/add/operator/catch';
 // import 'rxjs/add/operator/map';
-import { catchError } from 'rxjs/operators';
-import { map } from 'rxjs/operators';
-
-
-
+// import { catchError } from 'rxjs/operators';
+// import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +24,7 @@ export class RoturaService {
   };
 
   getAllRotura() {
-    this.http.get<Rotura[]>(this.baseurl + 'rotura')
+    this.http.get<any[]>(this.baseurl + 'rotura')
     .subscribe(apiData => (this.allRotura = apiData));
     return this.allRotura;
   }

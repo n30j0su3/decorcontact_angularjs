@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Clientes } from 'src/app/models/clientes';
-import { TestService } from 'src/app/services/provider';
 import { ActivatedRoute} from '@angular/router';
+import { Soporte } from 'src/app/models/soporte';
+import { SoporteService } from 'src/app/services/provider';
+import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-soporte',
@@ -11,48 +11,53 @@ import { ActivatedRoute} from '@angular/router';
 })
 
 export class SoporteComponent implements OnInit {
+  user: FormGroup;
+  products: Soporte[];
+  brand: string;
 
-  products: Clientes[];
-  /*equipos: any = [];
-  weather: any;
-  stri: string;*/
-
-  constructor(private client: TestService, private router: Router, private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private fb: FormBuilder, private soporteSer: SoporteService) {
     this.route.data.subscribe(v => {
       console.log(v.data_brand);
       // return v.data_brand;
     });
-    // this.equipos = this.client;
-    // this.client.getUsers();
-    // console.log(this.equipos);
-   }
+  }
+  submitted = false;
 
   ngOnInit() {
-    this.getAllProducts();
-    // console.log(this.equipos);
-  }
-
-  getAllProducts(): void {
-    this.client.getAllProducts().subscribe(data => {
-      this.products = data;
+    this.user = this.fb.group({
+      cliente: ['', Validators.required],
+      tipo_documento_compra: ['', Validators.required],
+      num_pedido: ['', Validators.required],
+      codigo_producto: [''],
+      descripcion_producto: [''],
+      observaciones: [''],
+      empresa: [''],
+      autorizacion: ['', Validators.required]
     });
   }
-
-  addProduct(): void {
-    this.router.navigate(['add-product']);
-  }
-
-  deleteProduct(product: Clientes){
-    this.client.deleteProduct(product._id).subscribe(data => {
-      console.log(data);
-      this.getAllProducts();
+  onSubmit() {
+    this.submitted = true;
+    this.user.patchValue({
+      empresa: this.brand,
     });
+    // console.log('Enviado');
+    // console.log(this.user.value);
+    if (this.user.valid) {
+      // console.log('Entra porque es valido');
+      this.soporteSer.addSoporte_n(this.user.value)
+      .subscribe(
+        data => {
+          if (data.includes('soporte added')) {
+            alert('Complete');
+          } else{
+            alert('Algo falló');
+          }
+          console.log(data);
+        // this.router.navigate(['']);
+      });
+    }
   }
-
-  updateProduct(product: Clientes){
-    localStorage.removeItem('productId');
-    // localStorage.setItem('productId', product._id);
-    this.router.navigate(['edit-product']);
-  }
+  // get the form short name to access the form fields
+  get f() { return this.user.controls; }
 
 }

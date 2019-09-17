@@ -188,6 +188,13 @@
         <!--<button type="submit">Sign up</button>-->
         <!--<button type="submit" [disabled]="user.invalid">Enviar</button>-->
         <!--<button type="submit">Enviar</button>-->
+        <div class="fourth_part">
+          <mat-checkbox class="example-margin" id="mat-checkbox-1" formControlName="autorizacion">
+            <label for="mat-checkbox-1">
+              Autorizo a GRUPO DECOR S.A. para el tratamiento de datos personales, para fines publicitarios y comerciales, relacionados con nuestros productos y servicios, a través de medios electrónicos y físicos.<a href="https://www.decorceramica.com/terminos-y-condiciones/" target="_blank">Términos y condiciones</a>.
+            </label>
+          </mat-checkbox>
+        </div>
         <button type="submit" [disabled]="!user.valid">Enviar</button>
 
       </form>

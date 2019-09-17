@@ -55,6 +55,21 @@ mat-card-content{
         flex-flow: row wrap;
       }
     }
+    .fourth_part{
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: center;
+
+      .example-margin{
+        white-space: normal !important;
+        label{
+          white-space: normal !important;
+        }
+        .mat-checkbox-layout{
+          white-space: normal !important;
+        }
+      }
+    }
   }
 }
 /* tABLE*/
