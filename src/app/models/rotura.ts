@@ -10,5 +10,6 @@ export class Rotura {
   observaciones : String;
   forma_compensacion : String;
   direccion: String;
-  ciudad: String
+  ciudad: String;
+  empresa: String;
 }

@@ -14,6 +14,7 @@ import { SelectBrandComponent } from './components/default/select-brand/select-b
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // Módulo de cliente para usar http
 import { HttpClientModule } from '@angular/common/http';
+
 // Módulo de servicios
 import { Clientes } from './models/clientes';
 import { TestService } from './services/provider';

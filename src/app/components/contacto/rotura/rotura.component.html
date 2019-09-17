@@ -1,6 +1,7 @@
 <!-- Main Toolbar of an App -->
 <mat-toolbar color="black">
   <span>--- Prototype by N30j0su3 --- </span>
+  <span>{{brand}}</span>
   <span class="demo-toolbar"></span>
   <!--<button mat-button href="https://github.com/n30j0su3">Go To My projects</button>-->
 </mat-toolbar>
@@ -45,7 +46,8 @@
       <span>Sigue las siguientes instrucciones:</span><br>
       <p>1. Si en el momento de recibir tu producto, revisaste y encontraste rotura, y dejaste una anotación en el
         documento del transportador, diligencia esta solicitud:</p><br>
-      <form [formGroup]="user" class="form_container" (ngSubmit)="onFormSubmit(user.value)">
+      <form [formGroup]="user" class="form_container" (ngSubmit)="onSubmit()">
+      <!--<form [formGroup]="user" class="form_container" (ngSubmit)="onFormSubmit(user.value)">-->
         <!--<form novalidate (ngSubmit)="onSubmit()" [formGroup]="user"]>-->
         <div class="first_part">
           <div class="child1">
@@ -148,11 +150,14 @@
             <mat-radio-button value="reposicion">Reposición del producto</mat-radio-button>
             <mat-radio-button value="nota-credito">Nota Credito</mat-radio-button>
           </mat-radio-group>
+          <mat-error>
+            <span *ngIf="!user.get('forma_compensacion').valid && user.get('forma_compensacion').touched">Debes seleccionar una opción</span>
+          </mat-error>
         </div>
         <span class="space_up">Si deseas reposición de tu producto</span>
         <div class="reposicion"><span>Dirección donde deseas recibirlo:</span>
           <mat-form-field class="demo-full-width">
-            <input matInput formControlName="direccion" placeholder="">
+            <input matInput formControlName="direccion_compensacion" placeholder="">
           </mat-form-field>
           <span>Ciudad:</span>
           <mat-form-field class="demo-full-width">
@@ -182,7 +187,9 @@
         </label>-->
         <!--<button type="submit">Sign up</button>-->
         <!--<button type="submit" [disabled]="user.invalid">Enviar</button>-->
-        <button type="submit">Enviar</button>
+        <!--<button type="submit">Enviar</button>-->
+        <button type="submit" [disabled]="!user.valid">Enviar</button>
+
       </form>
     </div>
   </mat-card-content>
