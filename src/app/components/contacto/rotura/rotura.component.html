@@ -46,7 +46,7 @@
       <span>Sigue las siguientes instrucciones:</span><br>
       <p>1. Si en el momento de recibir tu producto, revisaste y encontraste rotura, y dejaste una anotación en el
         documento del transportador, diligencia esta solicitud:</p><br>
-      <form [formGroup]="user" class="form_container" (ngSubmit)="onSubmit()">
+      <form [formGroup]="user" method="post" enctype="multipart/form-data" class="form_container" (ngSubmit)="onSubmit()">
       <!--<form [formGroup]="user" class="form_container" (ngSubmit)="onFormSubmit(user.value)">-->
         <!--<form novalidate (ngSubmit)="onSubmit()" [formGroup]="user"]>-->
         <div class="first_part">
@@ -164,6 +164,15 @@
             <input matInput formControlName="ciudad" placeholder="">
           </mat-form-field>
         </div>
+
+        <label>Sube tu archivo</label>
+        <!-- <input type="file" formControlName="uploadFile" name="uploadFile"/>-->
+        <input (change)="fileChange($event)" type="file" name="upload" multiple id="uploadFile" aria-describedby="inputGroupFileAddon01">
+        <label class="custom-file-label" for="uploadFile">Choose file</label>
+
+        <!--<input type="file" [writeFile]="true" formControlName="uploadFile" class="form-control" multiple />-->
+        <!--<app-upload></app-upload>-->
+
         <!--<label>
         <span>Nro Documento Cliente:</span>
         <input

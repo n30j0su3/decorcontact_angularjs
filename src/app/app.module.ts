@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 // Módulo de servicios
 import { Clientes } from './models/clientes';
 import { TestService } from './services/provider';
+import { UploadComponent } from './components/default/upload/upload.component';
 // import { SelectFormComponent } from './components/contacto/select-form/select-form.component';
 
 @NgModule({
@@ -26,7 +27,8 @@ import { TestService } from './services/provider';
     HeaderComponent,
     FooterComponent,
     NotFoundComponent,
-    SelectBrandComponent
+    SelectBrandComponent,
+    UploadComponent
     // SelectFormComponent
   ],
   imports: [

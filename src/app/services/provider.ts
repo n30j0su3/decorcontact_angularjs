@@ -5,6 +5,7 @@ import { RoturaService } from 'src/app/services/rotura.service';
 import { NovedadesService } from 'src/app/services/novedades.service';
 import { SoporteService } from 'src/app/services/soporte.service';
 import { PqrsService } from 'src/app/services/pqrs.service';
+import { FileServiceService } from 'src/app/services/file-service.service';
 
 export {
     /*UserService
@@ -14,5 +15,6 @@ export {
     RoturaService,
     NovedadesService,
     SoporteService,
-    PqrsService
+    PqrsService,
+    FileServiceService
 };

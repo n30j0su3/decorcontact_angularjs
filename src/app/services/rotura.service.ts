@@ -33,10 +33,15 @@ export class RoturaService {
     return this.http.get<Rotura>(this.baseurl + 'rotura' + '/' + id);
   }
 
-  addRotura_n(product: any) {
+  /*addRotura_n(product: any) {
     // console.log(this.http.post(this.baseurl + 'rotura', product));
     // console.log(this.http.post<any>(this.baseurl + 'rotura', JSON.stringify(product), this.httpOptions));
-    return this.http.post(this.baseurl + 'rotura', product, {responseType: 'text'});
+    // return this.http.post(this.baseurl + 'rotura', product, {responseType: 'text'}); FUNCIONA
+    return this.http.post(this.baseurl + 'rotura', product, {reportProgress: true, responseType: 'text'});
+  }*/
+  addRotura_n(product: any, uploadsfiles: any) {
+    // return this.http.post(this.baseurl + 'rotura', {product, uploadsfiles}, {responseType: 'text'});
+    return this.http.post(this.baseurl + 'rotura', {product, uploadsfiles}, {responseType: 'text'});
   }
 
   addRotura(product: any): Observable<any> {

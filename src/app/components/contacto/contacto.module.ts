@@ -9,13 +9,19 @@ import { NovedadesComponent } from './novedades/novedades.component';
 import { RoturaComponent } from './rotura/rotura.component';
 // Import the form.io module
 import { FormioModule } from 'angular-formio';
+// Import the upload module
+import { UploadModule } from '../upload/upload.module'
 
 // Módulo de formularios
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// Módulo de reactive validators
+import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators'; // <-- #2 import module
+
 // Animaciones & material
 import {MatButtonModule, MatCheckboxModule, MatToolbarModule, MatCardModule,
   MatExpansionModule, MatDatepickerModule, MatInputModule, MatTabsModule,
   MatTooltipModule, MatFormFieldModule, MatMenuModule, MatSnackBarModule, MatRadioModule} from '@angular/material';
+
 
 // Example modules https://stackblitz.com/angular/bnookxvvvmr?file=src%2Fapp%2Fapp-routing.module.ts
 
@@ -29,7 +35,7 @@ import {MatButtonModule, MatCheckboxModule, MatToolbarModule, MatCardModule,
     MatButtonModule, MatCheckboxModule, MatToolbarModule, MatCardModule,
     MatExpansionModule, MatDatepickerModule, MatInputModule, MatTabsModule,
     MatTooltipModule, MatFormFieldModule, MatMenuModule, MatSnackBarModule, MatRadioModule,
-    FormioModule
+    FormioModule, UploadModule, RxReactiveFormsModule
   ],
   entryComponents: [SelectFormComponent],
   exports: [SelectFormComponent, PQRSComponent, SoporteComponent, NovedadesComponent, RoturaComponent,
