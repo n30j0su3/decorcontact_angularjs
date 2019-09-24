@@ -39,8 +39,10 @@ export class RoturaService {
     // return this.http.post(this.baseurl + 'rotura', product, {responseType: 'text'}); FUNCIONA
     return this.http.post(this.baseurl + 'rotura', product, {reportProgress: true, responseType: 'text'});
   }*/
+// return this.http.post(this.baseurl + 'rotura', {product, uploadsfiles}, {responseType: 'text'});
+
+
   addRotura_n(product: any, uploadsfiles: any) {
-    // return this.http.post(this.baseurl + 'rotura', {product, uploadsfiles}, {responseType: 'text'});
     return this.http.post(this.baseurl + 'rotura', {product, uploadsfiles}, {responseType: 'text'});
   }
 
