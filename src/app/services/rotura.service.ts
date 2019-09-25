@@ -42,8 +42,20 @@ export class RoturaService {
 // return this.http.post(this.baseurl + 'rotura', {product, uploadsfiles}, {responseType: 'text'});
 
 
-  addRotura_n(product: any, uploadsfiles: any) {
-    return this.http.post(this.baseurl + 'rotura', {product, uploadsfiles}, {responseType: 'text'});
+  // addRotura_n(product: any, uploadsfiles: any) {
+  //   return this.http.post(this.baseurl + 'rotura', {product, uploadsfiles}, {responseType: 'text'});
+  upload(fileToUpload: any, name: string) {
+    let input = new FormData();
+    for (let i = 0; i < fileToUpload.length; i++) {
+      input.append('file', fileToUpload[i], name);
+    }
+    // input.append('file', fileToUpload);
+
+    return this.http
+        .post(this.baseurl + 'roturaup', input, {responseType: 'text'});
+  }
+  addRotura_n(product: any) {
+    return this.http.post(this.baseurl + 'rotura', product, {responseType: 'text'});
   }
 
   addRotura(product: any): Observable<any> {

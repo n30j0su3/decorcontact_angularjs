@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { Rotura } from 'src/app/models/rotura';
 import { RoturaService, FileServiceService } from 'src/app/services/provider';
@@ -6,18 +6,17 @@ import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { RxFormGroup, RxFormBuilder, FormGroupExtension } from '@rxweb/reactive-form-validators';
 
 @Component({
-  selector: 'app-rotura',
-  templateUrl: './rotura.component.html',
-  styleUrls: ['./rotura.component.scss']
+  selector: "app-rotura",
+  templateUrl: "./rotura.component.html",
+  styleUrls: ["./rotura.component.scss"]
 })
 export class RoturaComponent implements OnInit {
   user: FormGroup;
   products: Rotura[];
   brand: string;
-  uploadedFiles: Array < File > ;
-  upload: Array < string > ;
-  testt: Array < string > ;
-  testing: any;
+  uploadedFiles: Array<File>;
+  upload: Array<any>;
+  upload_end: any;
   // upload files https://stackblitz.com/edit/angular-material-file-upload
   // https://www.npmjs.com/package/angular-material-fileupload
   // classRotura: Rotura;
@@ -26,7 +25,7 @@ export class RoturaComponent implements OnInit {
   // roturaListTable: Array<any> = ['', '', '', '', ''];
   // editable table https://mdbootstrap.com/docs/angular/tables/editable/
   // editable table https://embed.plnkr.co/plunk/2Fue9L
-/*  roturaList: Array<any> = [
+  /*  roturaList: Array<any> = [
     { id: 1, name: 'Aurelia Vega', age: 30, companyName: 'Deepends', country: 'Spain', city: 'Madrid' },
     { id: 2, name: 'Guerra Cortez', age: 45, companyName: 'Insectus', country: 'USA', city: 'San Francisco' },
   ];*/
@@ -36,8 +35,8 @@ export class RoturaComponent implements OnInit {
     private fb: RxFormBuilder,
     private roturaSer: RoturaService,
     private fileSer: FileServiceService
-    ) {
-  // constructor(private route: ActivatedRoute, private fb: FormBuilder, private roturaSer: RoturaService) {
+  ) {
+    // constructor(private route: ActivatedRoute, private fb: FormBuilder, private roturaSer: RoturaService) {
     this.route.data.subscribe(v => {
       this.brand = v.data_brand;
       console.log(v.data_brand);
@@ -46,140 +45,139 @@ export class RoturaComponent implements OnInit {
   }
   submitted = false;
   // Ejemplo formularios angular https://unprogramador.com/formularios-en-angular/
+  @ViewChild('fileInput', { static: false }) fileInput;
+  addFile(): void {
+    let fi = this.fileInput.nativeElement;
+    if (fi.files && fi.files[0]) {
+      const fileToUpload2 = fi.files;
+      /*for (let i = 0; i < fi.files.length; i++) {
+        fileToUpload2[i] = fi.files[i];
+      }*/
+      let fileToUpload = fi.files[0];
+      let namme = this.user.value.cliente;
+      // this.user.get('cliente')
+      this.roturaSer.upload(fileToUpload2, namme).subscribe(res => {
+      // this.roturaSer.upload(fileToUpload).subscribe(res => {
+        console.log(res);
+      });
+    }
+  }
   ngOnInit() {
     // this.classRotura._id
     this.user = this.fb.group({
       /*name: ['', [Validators.required, Validators.minLength(2)]],
       password: ['', Validators.required],
       passwordRepeat: ['', Validators.required]*/
-      cliente: ['', Validators.required],
-      tipo_documento_compra: ['', Validators.required],
-      num_pedido: ['', Validators.required],
-      codigo_producto: [''],
-      descripcion_producto: [''],
-      cantidad_comprada: [''],
-      cantidad_rotura: [''],
-      observaciones: [''],
-      forma_compensacion: ['', Validators.required],
-      direccion_compensacion: [''],
-      ciudad: [''],
-      empresa: [''],
-      autorizacion: ['', Validators.required]
-      // , uploadFile: ['']
+      cliente: ["", Validators.required],
+      tipo_documento_compra: ["", Validators.required],
+      num_pedido: ["", Validators.required],
+      codigo_producto: [""],
+      descripcion_producto: [""],
+      cantidad_comprada: [""],
+      cantidad_rotura: [""],
+      observaciones: [""],
+      forma_compensacion: ["", Validators.required],
+      direccion_compensacion: [""],
+      ciudad: [""],
+      empresa: [""],
+      autorizacion: ["", Validators.required]
+      //, upload: ['']
     });
-
   }
   fileChange(element) {
     this.uploadedFiles = element.target.files;
     console.log(this.uploadedFiles);
   }
 
-/*
-  async readFileAsDataURL(file) {
+  readFileAsDataURL(file) {
     // tslint:disable-next-line: variable-name
-    const result_base64 = await new Promise((resolve) => {
-        const fileReader = new FileReader();
-        fileReader.onload = (e) => resolve(fileReader.result);
-        fileReader.readAsDataURL(file);
+    const result_base64 = new Promise(resolve => {
+      const fileReader = new FileReader();
+      fileReader.onload = e => resolve(fileReader.result);
+      fileReader.readAsDataURL(file);
     });
-    console.log(result_base64); // aGV5IHRoZXJl...
+    // console.log(result_base64);
     return result_base64;
   }
-  */
-  onSubmit() {
+
+  async onSubmit() {
     let formData = new FormData();
     this.submitted = true;
     this.user.patchValue({
-      empresa: this.brand,
+      empresa: this.brand
     });
-
+    this.addFile();
+    const files = [];
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < this.uploadedFiles.length; i++) {
-      // this.files = this.getBase64(this.uploadedFiles[i]);
-      /*const reader = new FileReader();
-      let files;
-      reader.onload = (event) => {
-        // files = reader.result;
-        console.log(reader.result);
-        files = reader.result;
-      };
-      reader.readAsDataURL(this.uploadedFiles[i]);*/
-      this.fileSer.uploadDataUrl(this.uploadedFiles[i])
+      // files.push(await this.readFileAsDataURL(this.uploadedFiles[i]));
+      // this.upload = files;
+      /*this.fileSer.uploadDataUrl(this.uploadedFiles[i])
       .subscribe(dataold => {
           console.log(dataold);
-          this.testing = dataold;
-      });
-
-          // this.data_response = data_response;
-          // console.log(this.data_response);
-
-          /*
-          if (this.data_response === undefined) {
-            console.log('No ha terminado la promesa');
-            setTimeout(() => {
-              console.log('esperando');
-              this.data_response = data_response;
-            }, 1500);
-            console.log(this.data_response);
-            this.testt[i] = this.data_response;
-          } else {
-            console.log('La promesa termino bien');
-            this.testt[i] = this.data_response;
-          }*/
-          // console.log(data_response);
-          // console.log(this.testt);
-        // this.router.navigate(['']);
-      /*.toPromise()
-      .then(
-        async data_response => {
-          this.data_response = await data_response;
-          console.log(data_response);
-        })
-      .then( function() { this.testt[i] = this.data_response; })
-      .catch(e => {
-          console.log(e);
+          // this.upload.push(dataold);
       });*/
-      let files;
-      // this.upload[i] = files;
-
-      formData.append('uploads[]', this.uploadedFiles[i], this.uploadedFiles[i].name);
-      formData.append('uploads64[]', files);
-      // formData.append('uploads64[]', files, this.uploadedFiles[i].name);
+      // formData.append('uploads[]', this.uploadedFiles[i], this.uploadedFiles[i].name);
+      // console.log(formData.get('uploads[]'));
+      /*
       // console.log(this.uploadedFiles[i]);
       console.log(this.uploadedFiles[i].name);
-      console.log(formData.get('uploads[]'));
-      console.log(formData);
-      console.log(this.testt[i]);
+      console.log(formData);*/
     }
+    // this.upload_end = this.uploadedFiles;
+    /*
+    for ( let key in this.uploadedFiles ) {
+      formData.append(key, this.uploadedFiles[key]);
+    }
+    */
+
+    // Loop through each of the selected files.
+    // tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < this.uploadedFiles.length; i++) {
+      const file = this.uploadedFiles[i];
+      // Add the file to the request.
+      formData.append("archivos", file, file.name);
+    }
+    // formData.append('uploads_end', this.upload_end);
+    // console.log(formData.get('uploads_end'));
+    console.log(formData);
+    console.log(formData.getAll("archivos"));
+
     if (this.user.valid) {
-      this.roturaSer.addRotura_n(this.user.value, formData)
-      // this.roturaSer.addRotura_n(this.user.value, formData.get('uploads[]'))
-      // this.roturaSer.addRotura_n(this.user.value, this.files)
-      .subscribe(
-        data => {
+      this.roturaSer
+        .addRotura_n(this.user.value)
+        // this.roturaSer.addRotura_n(this.user.value, formData)
+
+        // this.roturaSer.addRotura_n(this.user.value, this.user.value)
+        // this.roturaSer.addRotura_n(this.user.value, this.upload)
+        // this.roturaSer.addRotura_n(this.user.value, formData)
+        // this.roturaSer.addRotura_n(this.user.value, this.files)
+        .subscribe(data => {
           console.log(data);
-          if (data.includes('rotura added')) {
-            alert('Complete');
+          if (data.includes("rotura added")) {
+            alert("Complete");
           } else {
-            alert('Algo falló');
+            alert("Algo falló");
           }
           console.log(data);
-        // this.router.navigate(['']);
-      });
+          // this.router.navigate(['']);
+        });
     }
   }
   // get the form short name to access the form fields
-  get f() { return this.user.controls; }
+  get f() {
+    return this.user.controls;
+  }
 
   onFormSubmit(form: NgForm) {
     // console.log(form);
-//    form.controls['empresa'].patchValue(this.brand);
+    //    form.controls['empresa'].patchValue(this.brand);
 
-/*form.controls.empresa.patchValue({
+    /*form.controls.empresa.patchValue({
       empresa: this.brand
     });*/
 
-//
+    //
     console.log(form);
     console.log(this.brand);
     // this.roturaSer.getAllRotura();
@@ -190,11 +188,10 @@ export class RoturaComponent implements OnInit {
 
     this.submitted = true;
     // if (this.user.valid) {
-    this.roturaSer.addRotura(this.user.value)
-      .subscribe( data => {
-        console.log(data);
-        // this.router.navigate(['']);
-      });
+    this.roturaSer.addRotura(this.user.value).subscribe(data => {
+      console.log(data);
+      // this.router.navigate(['']);
+    });
     /*} else{
       console.log('no valido');
     }*/
