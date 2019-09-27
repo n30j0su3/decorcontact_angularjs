@@ -25,6 +25,21 @@ export class SoporteService {
   getSoporteById(id: string) {
     return this.http.get<any>(this.baseurl + 'soporte' + '/' + id);
   }
+  upload(fileToUpload: any, name: string) {
+    const input = new FormData();
+    // tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < fileToUpload.length; i++) {
+      // console.log(fileToUpload[i].type);
+      if (fileToUpload[i].type === 'image/jpeg' || fileToUpload[i].type === 'image/gif' || fileToUpload[i].type === 'image/png'
+      || fileToUpload[i].type === 'video/webm' || fileToUpload[i].type === 'video/mp4' || fileToUpload[i].type === 'application/pdf'
+      || fileToUpload[i].type === 'application/msword') {
+        input.append('file', fileToUpload[i], name);
+      }
+    }
+    // input.append('file', fileToUpload);
+
+    return this.http.post(this.baseurl + 'soporteup', input, {responseType: 'text'});
+  }
 
   addSoporte_n(product: any) {
     // console.log(this.http.post(this.baseurl + 'rotura', product));

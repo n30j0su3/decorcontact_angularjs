@@ -164,11 +164,12 @@
             <input matInput formControlName="ciudad" placeholder="">
           </mat-form-field>
         </div>
+        <span class="space_up justificado">Si al recibir tu producto NO dejaste una anotación en el documento del transportador, tienes 48 horas despues de haber recibido tu producto para solicitar la reposición. En este caso, adicional a la información del punto 1, adjunta fotografias o videos donde se evidencien claramente los productos y cantidades reportadas.</span>
 
-        <label>Sube tu archivo</label>
+        <label class="space_up">Sube tu archivo</label>
         <!-- <input type="file" formControlName="uploadFile" name="uploadFile"/>-->
         <input (change)="fileChange($event)" type="file" #fileInput name="upload" multiple id="uploadFile" aria-describedby="inputGroupFileAddon01">
-        <label class="custom-file-label" for="uploadFile">Choose file</label>
+        <!--<label class="custom-file-label" for="uploadFile">Choose file</label>-->
 
         <!--<input type="file" [writeFile]="true" formControlName="uploadFile" class="form-control" multiple />-->
         <!--<app-upload></app-upload>-->
@@ -197,7 +198,7 @@
         <!--<button type="submit">Sign up</button>-->
         <!--<button type="submit" [disabled]="user.invalid">Enviar</button>-->
         <!--<button type="submit">Enviar</button>-->
-        <div class="fourth_part">
+        <div class="fourth_part space_up">
           <mat-checkbox class="example-margin" id="mat-checkbox-1" formControlName="autorizacion">
             <label for="mat-checkbox-1">
               Autorizo a GRUPO DECOR S.A. para el tratamiento de datos personales, para fines publicitarios y comerciales, relacionados con nuestros productos y servicios, a través de medios electrónicos y físicos.<a href="https://www.decorceramica.com/terminos-y-condiciones/" target="_blank">Términos y condiciones</a>.

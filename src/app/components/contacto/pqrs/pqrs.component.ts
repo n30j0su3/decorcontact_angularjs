@@ -3,21 +3,24 @@ import { ActivatedRoute} from '@angular/router';
 import { Pqrs } from 'src/app/models/pqrs';
 import { PqrsService } from 'src/app/services/provider';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
-
+import { DatePipe } from '@angular/common';
 // import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pqrs',
   templateUrl: './pqrs.component.html',
-  styleUrls: ['./pqrs.component.scss']
+  styleUrls: ['./pqrs.component.scss'],
+  providers: [DatePipe]
 })
 export class PQRSComponent implements OnInit, OnDestroy {
   user: FormGroup;
   products: Pqrs[];
   brand: string;
+  dateNow : Date = new Date();
 
-  constructor(private route: ActivatedRoute, private fb: FormBuilder, private pqrsSer: PqrsService) {
+  constructor(private route: ActivatedRoute, private fb: FormBuilder, private pqrsSer: PqrsService, private datePipe: DatePipe) {
     this.route.data.subscribe(v => {
+      this.brand = v.data_brand;
       console.log(v.data_brand);
       // return v.data_brand;
     });
@@ -33,13 +36,19 @@ export class PQRSComponent implements OnInit, OnDestroy {
       motivo_contacto: [''],
       observaciones: [''],
       empresa: [''],
-      autorizacion: ['', Validators.required]
+      autorizacion: ['', Validators.required],
+      fecha_creacion: [''],
+      fecha_modificacion: [''],
+      estado_solicitud: ['']
     });
   }
   onSubmit() {
     this.submitted = true;
     this.user.patchValue({
       empresa: this.brand,
+      fecha_creacion: this.datePipe.transform(this.dateNow, 'dd-MM-yyyy-hh:mm:ss'),
+      fecha_modificacion: this.datePipe.transform(this.dateNow, 'dd-MM-yyyy-hh:mm:ss'),
+      estado_solicitud: 'Creada'
     });
     // console.log('Enviado');
     // console.log(this.user.value);
@@ -49,9 +58,9 @@ export class PQRSComponent implements OnInit, OnDestroy {
       .subscribe(
         data => {
           if (data.includes('PQRS added')) {
-            alert('Complete');
+            alert('Tu solicitud fué enviada con éxito');
           } else{
-            alert('Algo falló');
+            alert('Algo falló, por favor intentalo nuevamente');
           }
           console.log(data);
         // this.router.navigate(['']);

@@ -1,22 +1,22 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { Rotura } from 'src/app/models/rotura';
-import { RoturaService, FileServiceService } from 'src/app/services/provider';
-import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
-import { RxFormGroup, RxFormBuilder, FormGroupExtension } from '@rxweb/reactive-form-validators';
-
+import { RoturaService } from 'src/app/services/provider';
+import { FormGroup, Validators } from '@angular/forms';
+import { RxFormGroup, RxFormBuilder} from '@rxweb/reactive-form-validators';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-rotura',
   templateUrl: './rotura.component.html',
-  styleUrls: ['./rotura.component.scss']
+  styleUrls: ['./rotura.component.scss'],
+  providers: [DatePipe]
 })
 export class RoturaComponent implements OnInit {
   user: FormGroup;
   products: Rotura[];
   brand: string;
+  dateNow : Date = new Date();
   uploadedFiles: Array<File>;
-  upload: Array<any>;
-  upload_end: any;
   // upload files https://stackblitz.com/edit/angular-material-file-upload
   // https://www.npmjs.com/package/angular-material-fileupload
   // editable table https://mdbootstrap.com/docs/angular/tables/editable/
@@ -30,7 +30,7 @@ export class RoturaComponent implements OnInit {
     private route: ActivatedRoute,
     private fb: RxFormBuilder,
     private roturaSer: RoturaService,
-    private fileSer: FileServiceService
+    private datePipe: DatePipe
   ) {
     // constructor(private route: ActivatedRoute, private fb: FormBuilder, private roturaSer: RoturaService) {
     this.route.data.subscribe(v => {
@@ -76,13 +76,16 @@ export class RoturaComponent implements OnInit {
       direccion_compensacion: [''],
       ciudad: [''],
       empresa: [''],
-      autorizacion: ['', Validators.required]
+      autorizacion: ['', Validators.required],
+      fecha_creacion: [''],
+      fecha_modificacion: [''],
+      estado_solicitud: ['']
       // , upload: ['']
     });
   }
   fileChange(element) {
     this.uploadedFiles = element.target.files;
-    console.log(this.uploadedFiles);
+    // console.log(this.uploadedFiles);
   }
 
   readFileAsDataURL(file) {
@@ -99,7 +102,10 @@ export class RoturaComponent implements OnInit {
   async onSubmit() {
     this.submitted = true;
     this.user.patchValue({
-      empresa: this.brand
+      empresa: this.brand,
+      fecha_creacion: this.datePipe.transform(this.dateNow, 'dd-MM-yyyy-hh:mm:ss'),
+      fecha_modificacion: this.datePipe.transform(this.dateNow, 'dd-MM-yyyy-hh:mm:ss'),
+      estado_solicitud: 'Creada'
     });
     this.addFile();
 
@@ -121,9 +127,9 @@ export class RoturaComponent implements OnInit {
         .subscribe(data => {
           console.log(data);
           if (data.includes('rotura added')) {
-            alert('Complete');
+            alert('Tu solicitud fué enviada con éxito');
           } else {
-            alert('Algo falló');
+            alert('Algo falló, por favor intentalo nuevamente');
           }
           console.log(data);
           // this.router.navigate(['']);

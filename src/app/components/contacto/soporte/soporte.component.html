@@ -89,8 +89,11 @@
         </div>
         <div class="third_part">
           <p class="space_down">Ayudanos a incluir fotos o videos donde se vea (n) las novedad (es), esto nos ayudará mucho a entender y asi poder darte un mejor servicio-</p>
+          <label class="space_up">Sube tu archivo</label>
+          <!-- <input type="file" formControlName="uploadFile" name="uploadFile"/>-->
+          <input type="file" #fileInput name="upload" multiple id="uploadFile" aria-describedby="inputGroupFileAddon01">
         </div>
-        <div class="fourth_part">
+        <div class="fourth_part space_down">
           <mat-checkbox class="example-margin" id="mat-checkbox-1" formControlName="autorizacion">
             <label for="mat-checkbox-1">
               Autorizo a GRUPO DECOR S.A. para el tratamiento de datos personales, para fines publicitarios y comerciales, relacionados con nuestros productos y servicios, a través de medios electrónicos y físicos.<a href="https://www.decorceramica.com/terminos-y-condiciones/" target="_blank">Términos y condiciones</a>.
