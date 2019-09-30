@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './components/default/not-found/not-found.component';
 import { SelectBrandComponent } from './components/default/select-brand/select-brand.component';
-import { PQRSComponent } from './components/contacto/pqrs/pqrs.component';
-import { SoporteComponent } from './components/contacto/soporte/soporte.component';
+import { UserComponent } from './components/default/user/user.component';
+// import { PQRSComponent } from './components/contacto/pqrs/pqrs.component';
+// import { SoporteComponent } from './components/contacto/soporte/soporte.component';
 // import { ContactoModule } from './components/contacto/contacto.module';
 import { UserService } from './services/provider';
 const routes: Routes = [
@@ -15,6 +16,10 @@ const routes: Routes = [
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'
+  },
+  {
+    path: 'user',
+    component: UserComponent
   },
   { path: 'decorceramica', data : {data_brand : 'decorceramica'},
   loadChildren: () => import('./components/contacto/contacto.module').then(mod => mod.ContactoModule)

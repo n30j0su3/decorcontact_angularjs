@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Clientes } from './models/clientes';
 import { TestService } from './services/provider';
 import { UploadComponent } from './components/default/upload/upload.component';
+import { UserComponent } from './components/default/user/user.component';
 // import { SelectFormComponent } from './components/contacto/select-form/select-form.component';
 
 @NgModule({
@@ -28,7 +29,8 @@ import { UploadComponent } from './components/default/upload/upload.component';
     FooterComponent,
     NotFoundComponent,
     SelectBrandComponent,
-    UploadComponent
+    UploadComponent,
+    UserComponent
     // SelectFormComponent
   ],
   imports: [
