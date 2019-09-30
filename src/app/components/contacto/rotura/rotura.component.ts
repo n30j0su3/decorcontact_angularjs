@@ -15,7 +15,7 @@ export class RoturaComponent implements OnInit {
   user: FormGroup;
   products: Rotura[];
   brand: string;
-  dateNow : Date = new Date();
+  dateNow: Date = new Date();
   uploadedFiles: Array<File>;
   // upload files https://stackblitz.com/edit/angular-material-file-upload
   // https://www.npmjs.com/package/angular-material-fileupload
