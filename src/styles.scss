@@ -14,6 +14,15 @@ $main_lightgray: #DADADA;
   --main_gold: #AE9C87;
   --main_lightgray: #DADADA;
 }
+mat-form-field{
+  .mat-form-field-wrapper{
+    .mat-form-field-flex{
+      background: #fff;
+      border-radius: 2px;
+      text-align: center;
+    }
+  }
+}
 .no_mostrar{display: none !important;}
 .invisible{display: block;visibility: hidden;height: 0;width: 0;}
 .justificado{text-align: justify;}
@@ -22,4 +31,13 @@ $main_lightgray: #DADADA;
   font-family: Glen-Jan-EchoesSans;
   src: url(https://www.decorceramica.com/wp-content/uploads/custom-fonts/2019/05/Glen-Jan-EchoesSans-1.otf) format("opentype");
 }
+@font-face {
+  font-family: Gotham-Book;
+  src: url(https://www.decorceramica.com/wp-content/uploads/custom-fonts/2019/05/Gotham-Book.otf) format("opentype");
+  }
+
+  @font-face {
+  font-family: Butler_Regular;
+  src: url(https://www.decorceramica.com/wp-content/uploads/custom-fonts/2019/05/Butler_Regular.otf) format("opentype");
+  }
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";

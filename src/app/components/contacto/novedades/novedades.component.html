@@ -9,19 +9,23 @@
 <mat-card>
   <!-- Title of an Card -->
   <mat-card-title>
-    Novedades con tu pedido:
+    <h3>Novedades con tu pedido:</h3>
   </mat-card-title>
 
   <!-- Actual content starts from here -->
   <mat-card-content>
     <div class="container">
-      <h3>Cuentanos la(s) novedad(es) que has tenido con la entrega de tu producto y la atenderemos cuanto antes.</h3>
-      <span>Para eso, ayudanos con la siguiente información:</span><br>
-      <form [formGroup]="user" class="form_container" (ngSubmit)="onSubmit()">
-      <!--<form [formGroup]="user" class="form_container" (ngSubmit)="onFormSubmit(user.value)">-->
-        <!--<form novalidate (ngSubmit)="onSubmit()" [formGroup]="user"]>-->
-        <div class="first_part">
-          <div class="child1">
+
+    </div>
+    <form [formGroup]="user" class="form_container" (ngSubmit)="onSubmit()">
+      <div class="main_container">
+        <div class="child1">
+          <div class="num">
+            <span class="numberstep">1</span>
+          </div>
+          <div class="content">
+            <span>Cuentanos la(s) novedad(es) que has tenido con la entrega de tu producto y la atenderemos cuanto antes.</span>
+            <span>Para eso, ayudanos con la siguiente información:</span><br>
             <mat-form-field class="demo-full-width">
               <input matInput formControlName="cliente" placeholder="Ingresa el número de cédula">
             </mat-form-field>
@@ -29,20 +33,17 @@
               <span *ngIf="!user.get('cliente').valid && user.get('cliente').touched">Ingrese un # de cédula
                 valido</span>
             </mat-error>
-          </div>
-          <div class="child1">
             <mat-form-field>
               <mat-label>Documento de compra:</mat-label>
               <select matNativeControl formControlName="tipo_documento_compra">
                 <option value="num_entrega">Número de entrega</option>
                 <option value="num_factura">Número de factura</option>
                 <!--<option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>-->
+                            <option value="audi">Audi</option>-->
               </select>
             </mat-form-field>
             <mat-error>
-              <span
-                *ngIf="!user.get('tipo_documento_compra').valid && user.get('tipo_documento_compra').touched">Seleccione
+              <span *ngIf="!user.get('tipo_documento_compra').valid && user.get('tipo_documento_compra').touched">Seleccione
                 un tipo de documento</span>
             </mat-error>
             <mat-form-field class="demo-full-width">
@@ -54,66 +55,57 @@
             </mat-error>
           </div>
         </div>
-        <div class="second_part">
-          <span class="cursiva">Puedes ingresar varios items separando con comas la información </span>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Código</th>
-                <th>Tipo de novedad</th>
-                <th>Descripción Producto</th>
-                <th>Cantidad comprada</th>
-                <th>Cantidad novedad</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <mat-form-field class="demo-full-width">
-                    <input matInput formControlName="codigo_producto" placeholder="">
-                  </mat-form-field>
-                </td>
-                <td>
-                  <mat-form-field class="demo-full-width">
-                    <input matInput formControlName="tipo_novedad" placeholder="">
-                  </mat-form-field>
-                </td>
-                <td>
-                  <mat-form-field class="demo-full-width">
-                    <input matInput formControlName="descripcion_producto" placeholder="">
-                  </mat-form-field>
-                </td>
-                <td>
-                  <mat-form-field class="demo-full-width">
-                    <input matInput formControlName="cantidad_comprada" placeholder="">
-                  </mat-form-field>
-                </td>
-                <td>
-                  <mat-form-field class="demo-full-width">
-                    <input matInput formControlName="cantidad_novedad" placeholder="">
-                  </mat-form-field>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="child2">
+          <div class="num">
+            <span class="numberstep">2</span>
+          </div>
+          <div class="content">
+            <span>Puedes ingresar varios items separando con comas la información</span><br>
+            <mat-form-field class="demo-full-width">
+              <input matInput formControlName="codigo_producto" placeholder="Código">
+            </mat-form-field>
+            <mat-form-field class="demo-full-width">
+              <input matInput formControlName="tipo_novedad" placeholder="Tipo de novedad">
+            </mat-form-field>
+            <mat-form-field class="demo-full-width">
+              <input matInput formControlName="descripcion_producto" placeholder="Descripción Producto">
+            </mat-form-field>
+            <mat-form-field class="demo-full-width">
+              <input matInput formControlName="cantidad_comprada" placeholder="Cantidad comprada">
+            </mat-form-field>
+            <mat-form-field class="demo-full-width">
+              <input matInput formControlName="cantidad_novedad" placeholder="Cantidad novedad">
+            </mat-form-field>
+          </div>
         </div>
-        <label class="space_up">Sube tu archivo</label>
-        <!-- <input type="file" formControlName="uploadFile" name="uploadFile"/>-->
-        <input type="file" #fileInput name="upload" multiple id="uploadFile" aria-describedby="inputGroupFileAddon01">
-
-        <div class="third_part">
-          <p class="space_down">En caso que aplique, ayudanos a incluir fotos o videos, esto nos ayudará mucho a entender y asi poder darte un mejor servicio.</p>
+      </div>
+      <div class="main_container">
+        <div class="child1">
+          <div class="num">
+            <span class="numberstep">3</span>
+          </div>
+          <div class="content">
+            <p class="space_down">En caso que aplique, ayudanos a incluir fotos o videos, esto nos ayudará mucho a entender y asi poder darte un mejor servicio.</p>
+            <input type="file" #fileInput name="upload" multiple id="uploadFile" aria-describedby="inputGroupFileAddon01">
+          </div>
         </div>
-        <div class="fourth_part">
-          <mat-checkbox class="example-margin" id="mat-checkbox-1" formControlName="autorizacion">
-            <label for="mat-checkbox-1">
-              Autorizo a GRUPO DECOR S.A. para el tratamiento de datos personales, para fines publicitarios y comerciales, relacionados con nuestros productos y servicios, a través de medios electrónicos y físicos.<a href="https://www.decorceramica.com/terminos-y-condiciones/" target="_blank">Términos y condiciones</a>.
-            </label>
-          </mat-checkbox>
+        <div class="child2">
+            <div class="num">
+              <span class="numberstep">4</span>
+            </div>
+            <div class="content">
+              <mat-checkbox class="example-margin" id="mat-checkbox-1" formControlName="autorizacion">
+                <label class="text_term" for="mat-checkbox-1">
+                  Autorizo a GRUPO DECOR S.A. para el tratamiento de datos personales, para fines publicitarios y comerciales,
+                  relacionados con nuestros productos y servicios, a través de medios electrónicos y físicos.<a
+                    href="https://www.decorceramica.com/terminos-y-condiciones/" target="_blank">Términos y condiciones</a>.
+                </label>
+              </mat-checkbox>
+              <button class="btn_style" type="submit" [disabled]="!user.valid">Enviar</button>
+            </div>
         </div>
-        <button type="submit" [disabled]="!user.valid">Enviar</button>
+      </div>
 
       </form>
-    </div>
   </mat-card-content>
 </mat-card>

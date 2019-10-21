@@ -8,7 +8,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  logo_brand="assets/images/logo_grupo.jpg";
+  logo_brand = 'assets/images/logo_grupo.jpg';
   constructor(
     private location: Location
   ) {}

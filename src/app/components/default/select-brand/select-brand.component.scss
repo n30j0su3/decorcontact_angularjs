@@ -7,7 +7,9 @@
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-evenly;
-  padding: 1em;
+  overflow: hidden;
+  /*padding: 1em;*/
+  margin: -7px 0;
   height: 100%;
   min-height: 230px;
   align-items: center;
@@ -17,13 +19,18 @@
       justify-content: center;
       img{
         width: 100%;
+          &.grow {
+            transition: all .1s ease-in-out;
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
       }
     }
-    div:hover{
-      transform: scale(1.1);
-      transition: ease .1s;
-    }
-    /*.brand_decor{display:flex;}
-    .brand_nova{display:flex;}
-    .brand_klp{display:flex;}*/
+}
+@media
+only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)  {
+  .container_brand{
+    flex-flow: row wrap;
+  }
 }

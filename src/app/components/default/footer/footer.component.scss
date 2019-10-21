@@ -5,7 +5,8 @@ $main_darkgray: #2C2C2B;
 }
 .footer_contain{
   background-color: $main_darkgray;
-  display: flex;
+  /*display: flex;*/
+  display: none;
   flex-flow: row nowrap;
   padding: 1em 0;
   justify-content: space-around;

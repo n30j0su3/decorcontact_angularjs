@@ -23,13 +23,20 @@ ul li{
 .links{
     list-style: none;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-end;
+    li{
+      a{
+        color:#fff;
+        text-decoration: none;
+        font-family: 'Gotham-Book';
+      }
+    }
 }
 .top_links{display:none;}
 .top_links .links{justify-content: center;}
 @media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)  {
   ul li{
-    padding: 0em;
-    font-size: .8em;
+    /*padding: 0em;
+    font-size: .8em;*/
   }
 }
