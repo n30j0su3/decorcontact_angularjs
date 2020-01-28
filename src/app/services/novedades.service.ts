@@ -10,7 +10,7 @@ export class NovedadesService {
   public allNovedades: any = null;
 
   constructor(private http: HttpClient) { }
-  baseurl: string = 'http://localhost:3002/';
+  baseurl: string = 'http://192.168.223.212:3002/';
   // Http Headers
   httpOptions = {
     headers: new HttpHeaders({

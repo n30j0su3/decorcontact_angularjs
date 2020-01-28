@@ -21,49 +21,63 @@
               <span class="numberstep">1</span>
             </div>
             <div class="content">
-              <span>Aquí podras registrar tus Peticiones, Sugerencias, Reclamos, Sugerencias y Felicitaciones</span>
-              <span>Sigue las siguientes instrucciones:</span><br>
-              <mat-form-field class="demo-full-width">
-                <input matInput formControlName="cliente" placeholder="Número documento cliente">
-              </mat-form-field>
-              <mat-error>
-                <span *ngIf="!user.get('cliente').valid && user.get('cliente').touched">Ingrese un # de cédula
-                  valido</span>
-              </mat-error>
-              <mat-form-field>
-                <mat-label>Documento de compra:</mat-label>
-                <select matNativeControl formControlName="tipo_documento_compra">
-                  <option value="num_oferta">Número oferta</option>
-                  <option value="num_pedido">Número de pedido</option>
-                  <option value="num_entrega">Número de entrega</option>
-                  <option value="num_factura">Número de factura</option>
-                  <!--<option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>-->
-                </select>
-              </mat-form-field>
-              <mat-error>
-                <span *ngIf="!user.get('tipo_documento_compra').valid && user.get('tipo_documento_compra').touched">Seleccione
-                  un tipo de documento</span>
-              </mat-error>
-              <mat-form-field class="demo-full-width">
-                <input matInput formControlName="num_pedido" placeholder="Número de documento">
-              </mat-form-field>
-              <mat-error>
-                <span *ngIf="!user.get('num_pedido').valid && user.get('num_pedido').touched">Ingrese un número de
-                  documento valido</span>
-              </mat-error>
-              <mat-form-field>
-                <mat-label>Motivo del contacto:</mat-label>
-                <select matNativeControl formControlName="motivo_contacto">
-                  <option value="Peticion">Petición</option>
-                  <option value="Queja">Queja</option>
-                  <option value="Reclamo">Reclamo</option>
-                  <option value="Sugerencia">Sugerencia</option>
-                  <option value="Felicitacion">Felicitacion</option>
-                  <!--<option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>-->
-                </select>
-              </mat-form-field>
+              <p>Aquí podras registrar tus Peticiones, Sugerencias, Reclamos, Sugerencias y Felicitaciones
+                Sigue las siguientes instrucciones:</p>
+              <div class="con space_up">
+                <mat-form-field class="demo-full-width">
+                  <input matInput formControlName="cliente" placeholder="Número documento cliente">
+                </mat-form-field>
+                <mat-error>
+                  <span *ngIf="!user.get('cliente').valid && user.get('cliente').touched">Ingrese un # de cédula
+                    valido</span>
+                </mat-error>
+                <mat-form-field class="demo-full-width">
+                  <input matInput formControlName="email" placeholder="Ingresa tu email">
+                </mat-form-field>
+                <mat-error>
+                  <span *ngIf="!user.get('email').valid && user.get('email').touched">Ingrese un email válido</span>
+                </mat-error>
+                <mat-form-field class="demo-full-width">
+                  <input matInput formControlName="celular" placeholder="Ingresa tu # de celular">
+                </mat-form-field>
+                <mat-error>
+                  <span *ngIf="!user.get('celular').valid && user.get('celular').touched">Ingrese un # de celular válido</span>
+                </mat-error>
+                <mat-form-field>
+                  <mat-label>Documento de compra:</mat-label>
+                  <select matNativeControl formControlName="tipo_documento_compra" class="pad_selects">
+                    <option value="num_oferta">Número oferta</option>
+                    <option value="num_pedido">Número de pedido</option>
+                    <option value="num_entrega">Número de entrega</option>
+                    <option value="num_factura">Número de factura</option>
+                    <!--<option value="mercedes">Mercedes</option>
+                                        <option value="audi">Audi</option>-->
+                  </select>
+                </mat-form-field>
+                <mat-error>
+                  <span *ngIf="!user.get('tipo_documento_compra').valid && user.get('tipo_documento_compra').touched">Seleccione
+                    un tipo de documento</span>
+                </mat-error>
+                <mat-form-field class="demo-full-width">
+                  <input matInput formControlName="num_pedido" placeholder="Número de documento">
+                </mat-form-field>
+                <mat-error>
+                  <span *ngIf="!user.get('num_pedido').valid && user.get('num_pedido').touched">Ingrese un número de
+                    documento valido</span>
+                </mat-error>
+                <mat-form-field>
+                  <mat-label>Motivo del contacto:</mat-label>
+                  <select matNativeControl formControlName="motivo_contacto" class="pad_selects">
+                    <option value="Peticion">Petición</option>
+                    <option value="Queja">Queja</option>
+                    <option value="Reclamo">Reclamo</option>
+                    <option value="Sugerencia">Sugerencia</option>
+                    <option value="Felicitacion">Felicitacion</option>
+                    <!--<option value="mercedes">Mercedes</option>
+                                        <option value="audi">Audi</option>-->
+                  </select>
+                </mat-form-field>
+              </div>
             </div>
           </div>
           <div class="child2">

@@ -30,9 +30,21 @@
             <span *ngIf="!user.get('cliente').valid && user.get('cliente').touched">Ingrese un # de cédula
               valido</span>
           </mat-error>
+          <mat-form-field class="demo-full-width">
+            <input matInput formControlName="email" placeholder="Ingresa tu email">
+          </mat-form-field>
+          <mat-error>
+            <span *ngIf="!user.get('email').valid && user.get('email').touched">Ingrese un email válido</span>
+          </mat-error>
+          <mat-form-field class="demo-full-width">
+            <input matInput formControlName="celular" placeholder="Ingresa tu # de celular">
+          </mat-form-field>
+          <mat-error>
+            <span *ngIf="!user.get('celular').valid && user.get('celular').touched">Ingrese un # de celular válido</span>
+          </mat-error>
           <mat-form-field>
             <mat-label>Documento de compra:</mat-label>
-            <select matNativeControl formControlName="tipo_documento_compra">
+            <select matNativeControl formControlName="tipo_documento_compra" class="pad_selects">
               <option value="num_pedido">Número de pedido</option>
               <option value="num_entrega">Número de entrega</option>
               <option value="num_factura">Número de factura</option>
@@ -80,9 +92,9 @@
         <div class="content">
           <p class="space_down">Ayudanos a incluir fotos o videos donde se vea(n) las novedad(es), esto nos ayudará mucho
             a entender y asi poder darte un mejor servicio-</p>
-          <label class="space_up">Sube tu archivo</label>
+            <label class="space_up">Extensiones permitidas (jpeg, gif, png, webm, mp4, pdf) Peso máximo 5 MB.</label>
           <!-- <input type="file" formControlName="uploadFile" name="uploadFile"/>-->
-          <input type="file" #fileInput name="upload" multiple id="uploadFile" aria-describedby="inputGroupFileAddon01">
+          <input type="file" #fileInput class="space_up" name="upload" multiple id="uploadFile" aria-describedby="inputGroupFileAddon01">
         </div>
       </div>
       <div class="child2">

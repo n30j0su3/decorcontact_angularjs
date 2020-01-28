@@ -1,0 +1,94 @@
+<!-- Main Toolbar of an App -->
+<mat-toolbar color="black">
+  <!--<span>--- Prototype by N30j0su3 --- </span>-->
+  <span>{{brand}}</span>
+  <span class="demo-toolbar"></span>
+  <!--<button mat-button href="https://github.com/n30j0su3">Go To My projects</button>-->
+</mat-toolbar>
+<!-- Card container that binds all togather -->
+<mat-card>
+  <!-- Title of an Card -->
+  <mat-card-title>
+    <h3>Estado de tu pedido:</h3>
+  </mat-card-title>
+
+  <!-- Actual content starts from here -->
+  <mat-card-content>
+    <div class="container">
+
+    </div>
+    <form [formGroup]="user" class="form_container">
+    <!--<form [formGroup]="user" (change)="getInfo()" class="form_container">-->
+      <div class="main_container">
+        <div class="child1">
+          <div class="num">
+            <span class="numberstep">1</span>
+          </div>
+          <div class="content">
+            <p>Aquí puedes conocer el estado de tu pedido. Para eso, ayúdanos con la siguiente información:</p>
+            <div class="con space_up">
+              <mat-form-field class="demo-full-width">
+                <input matInput formControlName="cliente" placeholder="Ingresa el número de cédula">
+              </mat-form-field>
+              <mat-error>
+                <span *ngIf="!user.get('cliente').valid && user.get('cliente').touched">Ingrese un # de cédula
+                  valido</span>
+              </mat-error>
+              <mat-form-field class="demo-full-width">
+                <!--<input matInput formControlName="pedido" ng-keyup="getInfo()" placeholder="Ingresa el número de pedido">-->
+                <input matInput formControlName="pedido"  *ngIf="getInfo()" placeholder="Ingresa el número de pedido">
+              </mat-form-field>
+              <mat-error>
+                <span *ngIf="!user.get('pedido').valid && user.get('pedido').touched">Ingrese un # de pedido válido</span>
+              </mat-error>
+            </div>
+          </div>
+        </div>
+        <div class="child2">
+          <div class="num">
+            <!--<span class="numberstep">2</span>-->
+          </div>
+          <div class="content">
+            <div class="con">
+              <p>{{name}}</p>
+              <p>{{direccion}}</p>
+              <p>{{ciudad}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="main_container space_up">
+      <div class="child3">
+        <div class="num">
+          <span class="numberstep">2</span>
+        </div>
+        <div class="content">
+          <h3 class="space_down">El siguiente es el estado de tu pedido:</h3>
+          <mat-progress-bar [value]="progress">
+          </mat-progress-bar>
+          <div class="progress_options space_up">
+            <div class="progress_option"><h2>Pedido creado</h2></div>
+            <div class="progress_option"><h2>Pedido alistado</h2></div>
+            <div class="progress_option"><h2>Pedido despachado</h2></div>
+            <div class="progress_option"><h2>Entrega estimada</h2></div>
+            <!-- <style parse-style>.ico_relative {left: 25%;}</style>-->
+            <img src="../../../../contacto/assets/images/31520.png" class="ico_relative" alt="">
+          </div>
+          <div class="progress_options space_up">
+            <div class="progress_option"><h2>{{fecha_creacion}}</h2></div>
+            <div class="progress_option"><h2>{{fecha_alistamiento}}</h2></div>
+            <div class="progress_option"><h2>{{fecha_despacho}}</h2></div>
+            <div class="progress_option"><h2>{{fecha_estimada}}</h2></div>
+            <!-- <style parse-style>.ico_relative {left: 25%;}</style>-->
+          </div>
+          <p class="space_up space_down">Estas fechas pueden variar dependiendo del origen y el destino del producto, debido a factores de transporte y condiciones de rutas locales y nacionales.</p>
+          <div class="con space_up">
+            <p *ngIf="this.user.valid  && !user.get(this.transportador)" class="space_up"><span>Transportador:</span> {{transportador}}</p>
+            <p *ngIf="this.user.valid  && !user.get(this.conductor)" class="space_up"><span>Conductor:</span> {{conductor}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -3,7 +3,7 @@ import { ActivatedRoute} from '@angular/router';
 import { Rotura } from 'src/app/models/rotura';
 import { RoturaService } from 'src/app/services/provider';
 import { FormGroup, Validators } from '@angular/forms';
-import { RxFormGroup, RxFormBuilder} from '@rxweb/reactive-form-validators';
+import { RxFormBuilder, RxwebValidators, NumericValueType} from '@rxweb/reactive-form-validators';
 import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-rotura',
@@ -64,13 +64,13 @@ export class RoturaComponent implements OnInit {
       /*name: ['', [Validators.required, Validators.minLength(2)]],
       password: ['', Validators.required],
       passwordRepeat: ['', Validators.required]*/
-      cliente: ['', Validators.required],
+      cliente: ['', [Validators.required, Validators.minLength(5), RxwebValidators.numeric({acceptValue:NumericValueType.PositiveNumber ,allowDecimal:false })]],
       tipo_documento_compra: ['', Validators.required],
       num_pedido: ['', Validators.required],
       codigo_producto: [''],
       descripcion_producto: [''],
-      cantidad_comprada: [''],
-      cantidad_rotura: [''],
+      cantidad_comprada: ['', [Validators.minLength(1), RxwebValidators.numeric({acceptValue:NumericValueType.PositiveNumber ,allowDecimal:false })]],
+      cantidad_rotura: ['', [Validators.minLength(1), RxwebValidators.numeric({acceptValue:NumericValueType.PositiveNumber ,allowDecimal:false })]],
       observaciones: [''],
       forma_compensacion: ['', Validators.required],
       direccion_compensacion: [''],
@@ -79,7 +79,9 @@ export class RoturaComponent implements OnInit {
       autorizacion: ['', Validators.required],
       fecha_creacion: [''],
       fecha_modificacion: [''],
-      estado_solicitud: ['']
+      estado_solicitud: [''],
+      email: ['', [Validators.required, RxwebValidators.email()]],
+      celular: ['', [Validators.required, Validators.minLength(5), RxwebValidators.numeric({acceptValue:NumericValueType.PositiveNumber ,allowDecimal:false })]]
       // , upload: ['']
     });
   }

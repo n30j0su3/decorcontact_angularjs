@@ -7,4 +7,6 @@ export class Pqrs {
   observaciones: string;
   empresa: string;
   autorizacion: string;
+  email: String;
+  celular: Number;
 }

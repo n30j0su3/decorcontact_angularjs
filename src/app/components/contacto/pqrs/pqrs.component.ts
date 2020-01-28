@@ -3,6 +3,7 @@ import { ActivatedRoute} from '@angular/router';
 import { Pqrs } from 'src/app/models/pqrs';
 import { PqrsService } from 'src/app/services/provider';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
+import { RxFormBuilder, RxwebValidators, NumericValueType} from '@rxweb/reactive-form-validators';
 import { DatePipe } from '@angular/common';
 // import { ActivatedRoute } from '@angular/router';
 
@@ -30,7 +31,7 @@ export class PQRSComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.user = this.fb.group({
-      cliente: ['', Validators.required],
+      cliente: ['', [Validators.required, Validators.minLength(5), RxwebValidators.numeric({acceptValue:NumericValueType.PositiveNumber ,allowDecimal:false })]],
       tipo_documento_compra: ['', Validators.required],
       num_pedido: ['', Validators.required],
       motivo_contacto: [''],
@@ -39,7 +40,9 @@ export class PQRSComponent implements OnInit, OnDestroy {
       autorizacion: ['', Validators.required],
       fecha_creacion: [''],
       fecha_modificacion: [''],
-      estado_solicitud: ['']
+      estado_solicitud: [''],
+      email: ['', [Validators.required, RxwebValidators.email()]],
+      celular: ['', [Validators.required, Validators.minLength(7), RxwebValidators.numeric({acceptValue:NumericValueType.PositiveNumber ,allowDecimal:false })]]
     });
   }
   onSubmit() {

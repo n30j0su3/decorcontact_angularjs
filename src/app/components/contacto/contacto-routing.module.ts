@@ -6,14 +6,16 @@ import { PQRSComponent } from './pqrs/pqrs.component';
 import { SoporteComponent } from './soporte/soporte.component';
 import { NovedadesComponent } from './novedades/novedades.component';
 import { RoturaComponent } from './rotura/rotura.component';
+import { EstadoPedidoComponent } from './estado-pedido/estado-pedido.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'contact', pathMatch: 'full'},
   { path: 'contact', component: SelectFormComponent },
   { path: 'contact/pqrs', component: PQRSComponent },
-  { path: 'contact/soporte', component: SoporteComponent },
+  // { path: 'contact/soporte', component: SoporteComponent },
   { path: 'contact/novedades', component: NovedadesComponent },
-  { path: 'contact/rotura', component: RoturaComponent }
+  { path: 'contact/rotura', component: RoturaComponent },
+  { path: 'contact/estado-pedido', component: EstadoPedidoComponent }
   // { path: ':id', component: ItemsDetailComponent }
 ];
 

@@ -55,7 +55,9 @@ export class SoporteComponent implements OnInit {
       autorizacion: ['', Validators.required],
       fecha_creacion: [''],
       fecha_modificacion: [''],
-      estado_solicitud: ['']
+      estado_solicitud: [''],
+      email: ['', Validators.required],
+      celular: ['', Validators.required]
     });
   }
   async onSubmit() {

@@ -3,7 +3,7 @@ import { ActivatedRoute} from '@angular/router';
 import { Novedades } from 'src/app/models/novedades';
 import { NovedadesService } from 'src/app/services/provider';
 import { FormGroup, Validators } from '@angular/forms';
-import { RxFormGroup, RxFormBuilder} from '@rxweb/reactive-form-validators';
+import { RxFormBuilder, RxwebValidators, NumericValueType} from '@rxweb/reactive-form-validators';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -53,19 +53,22 @@ export class NovedadesComponent implements OnInit {
   }
   ngOnInit() {
     this.user = this.fb.group({
-      cliente: ['', Validators.required],
+      cliente: ['', [Validators.required, Validators.minLength(5), RxwebValidators.numeric({acceptValue:NumericValueType.PositiveNumber ,allowDecimal:false })]],
       tipo_documento_compra: ['', Validators.required],
       num_pedido: ['', Validators.required],
       codigo_producto: [''],
       tipo_novedad: [''],
       descripcion_producto: [''],
-      cantidad_comprada: [''],
-      cantidad_novedad: [''],
+      cantidad_comprada: ['', [Validators.minLength(1), RxwebValidators.numeric({acceptValue:NumericValueType.PositiveNumber ,allowDecimal:false })]],
+      cantidad_novedad: ['', [Validators.minLength(1), RxwebValidators.numeric({acceptValue:NumericValueType.PositiveNumber ,allowDecimal:false })]],
       empresa: [''],
       autorizacion: ['', Validators.required],
       fecha_creacion: [''],
       fecha_modificacion: [''],
-      estado_solicitud: ['']
+      estado_solicitud: [''],
+      email: ['', [Validators.required, RxwebValidators.email()]],
+      celular: ['', [Validators.minLength(7), RxwebValidators.numeric({acceptValue:NumericValueType.PositiveNumber ,allowDecimal:false })]],
+      observaciones: ['']
     });
   }
 

@@ -7,5 +7,7 @@ export class Soporte {
   descripcion_producto: string;
   observaciones: string;
   empresa: string;
-  autorizacion: string
+  autorizacion: string;
+  email: String;
+  celular: Number;
 }

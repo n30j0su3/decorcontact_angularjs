@@ -12,5 +12,7 @@ export class Rotura {
   direccion: String;
   ciudad: String;
   empresa: String;
-  autorizacion: String
+  autorizacion: String;
+  email: String;
+  celular: Number;
 }

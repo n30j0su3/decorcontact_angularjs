@@ -11,7 +11,7 @@ export class TestService {
 // see more
   constructor(private http: HttpClient) { }
 
-  baseurl: string = "http://localhost:3002/";
+  baseurl: string = "http://192.168.223.212:3002/";
 
   getAllProducts(){
     return this.http.get<Clientes[]>(this.baseurl + 'clientes');

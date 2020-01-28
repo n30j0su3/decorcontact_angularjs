@@ -33,9 +33,13 @@
         background: #2C2C2B;
       }
       div{
+        img{
+          border-radius: 50%;
+        }
         h3{
           font-size: 1.5em;
           text-decoration: none;
+          // color: #6c6d6f;
           color: #fff;
           font-family: "Gotham-Book";
         }

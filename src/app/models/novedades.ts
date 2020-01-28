@@ -9,5 +9,8 @@ export class Novedades {
   cantidad_comprada : number;
   cantidad_novedad : number;
   empresa : string;
-  autorizacion: String
+  autorizacion: String;
+  email: String;
+  celular: Number;
+  observaciones: string;
 }

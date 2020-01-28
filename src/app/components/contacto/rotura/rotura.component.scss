@@ -65,12 +65,26 @@ p, span, label{
     align-items: flex-start;
     width: 50vw;
     padding: 0 2em;
+    .num{
+      flex: 1 0 7%;
+    }
     .content{
       display: flex;
       flex-flow: column nowrap;
       align-items: flex-start;
-      mat-form-field{
-        min-width: 340px;
+      flex: 1 0 93%;
+      .con{
+        display: flex;
+        flex-flow: row wrap;
+        mat-form-field{
+          // min-width: 340px;
+          flex: 1 0 50%;
+          padding: 0 .5em;
+        }
+      }
+      .third_part{
+        display: flex;
+        flex-flow: row wrap;
       }
     }
   }
@@ -80,16 +94,39 @@ p, span, label{
     align-items: flex-start;
     width: 50vw;
     padding: 0 2em;
+    .num{
+      flex: 1 0 7%;
+    }
     .content{
       display: flex;
       flex-flow: column nowrap;
+      flex: 1 0 93%;
       /*align-items: flex-start;*/
+      .ital{
+        font-size: 1em;
+        font-style: italic;
+      }
+      .con{
+        display: flex;
+        flex-flow: row wrap;
+        mat-form-field{
+          // min-width: 340px;
+          flex: 1 0 50%;
+          padding: 0 .5em;
+        }
+      }
     }
   }
 }
 .reposicion{
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: row wrap;
+  width: 100%;
+  mat-form-field{
+    // min-width: 340px;
+    flex: 1 0 50%;
+    padding: 0 .5em;
+  }
 }
 .fourth_part{
   .example-margin{

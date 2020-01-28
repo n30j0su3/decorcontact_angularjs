@@ -18,18 +18,13 @@ mat-card-content{
   // margin: 1em 8em;
   margin: 1em 1em;
 }
+:root{
+  --progress_value: 0%;
+}
 p, span, label{
   font-size: 1.2em;
   text-align: justify;
   color: #565556;
-}
-#uploadFile{
-  align-self: center;
-  input[type="button"] {
-    background: #565556;
-    color: #fff;
-    padding: 1em;
-  }
 }
 .container{
   display: flex;
@@ -71,6 +66,7 @@ p, span, label{
       .con{
         display: flex;
         flex-flow: row wrap;
+        align-self: normal;
         mat-form-field{
           // min-width: 340px;
           flex: 1 0 50%;
@@ -115,6 +111,66 @@ p, span, label{
       }
     }
   }
+  .child3{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    width: 95vw;
+    padding: 0 2em;
+    .num{
+      flex: 1 0 0%;
+    }
+    .content{
+      display: flex;
+      flex-flow: column nowrap;
+      // align-items: flex-start;
+      flex: 1 0 93%;
+      .progress_options{
+        display: flex;
+        flex-flow: row wrap;
+        .ico_relative{
+          position: relative;
+          // left: 0%;
+          left: var(--progress_value);
+          transition: ease-in .2s;
+          max-width: 140px;
+        }
+        .progress_option{
+          flex: 1 1 25%;
+          justify-content: center;
+          text-align: center;
+          align-items: center;
+          h2{
+            text-align: center;
+          }
+        }
+      }
+      .ital{
+        font-size: 1em;
+        font-style: italic;
+      }
+      .con{
+        display: flex;
+        flex-flow: row wrap;
+        align-self: normal;
+        p{
+          padding: 0 2em 0 0em;
+          span{
+            font-weight: bold;
+          }
+        }
+        mat-form-field{
+          // min-width: 340px;
+          flex: 1 0 50%;
+          padding: 0 .5em;
+        }
+      }
+      .third_part{
+        display: flex;
+        flex-flow: row wrap;
+      }
+    }
+  }
 }
 #mat-checkbox-1{
   white-space: normal !important;
@@ -149,9 +205,15 @@ th, td{
 
 /*
 	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
-	*/
+  */
+  @media
+	  only screen and (min-width: 881px) and (max-width: 1023px)  {
+      .ico_relative{
+        max-width: 75px !important;
+      }
+    }
 	@media
-	  only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px)  {
+	  only screen and (max-width: 760px), (min-width: 761px) and (max-width: 1024px)  {
       .main_container{
         display: flex;
         flex-flow: column wrap;
@@ -166,6 +228,21 @@ th, td{
           flex-flow: row nowrap;
           align-items: center;
           width: 100%;
+        }
+        .child3{
+          .content{
+            .progress_options{
+              .ico_relative{
+                max-width: 60px;
+              }
+              .progress_option{
+                flex: 1 1 23%;
+                h2{
+                  font-size: .9em;
+                }
+              }
+            }
+          }
         }
       }
       .numberstep{

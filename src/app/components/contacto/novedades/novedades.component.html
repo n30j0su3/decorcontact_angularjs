@@ -24,35 +24,49 @@
             <span class="numberstep">1</span>
           </div>
           <div class="content">
-            <span>Cuentanos la(s) novedad(es) que has tenido con la entrega de tu producto y la atenderemos cuanto antes.</span>
-            <span>Para eso, ayudanos con la siguiente información:</span><br>
-            <mat-form-field class="demo-full-width">
-              <input matInput formControlName="cliente" placeholder="Ingresa el número de cédula">
-            </mat-form-field>
-            <mat-error>
-              <span *ngIf="!user.get('cliente').valid && user.get('cliente').touched">Ingrese un # de cédula
-                valido</span>
-            </mat-error>
-            <mat-form-field>
-              <mat-label>Documento de compra:</mat-label>
-              <select matNativeControl formControlName="tipo_documento_compra">
-                <option value="num_entrega">Número de entrega</option>
-                <option value="num_factura">Número de factura</option>
-                <!--<option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>-->
-              </select>
-            </mat-form-field>
-            <mat-error>
-              <span *ngIf="!user.get('tipo_documento_compra').valid && user.get('tipo_documento_compra').touched">Seleccione
-                un tipo de documento</span>
-            </mat-error>
-            <mat-form-field class="demo-full-width">
-              <input matInput formControlName="num_pedido" placeholder="Número de documento">
-            </mat-form-field>
-            <mat-error>
-              <span *ngIf="!user.get('num_pedido').valid && user.get('num_pedido').touched">Ingrese un número de
-                documento valido</span>
-            </mat-error>
+            <p>Cuentanos la(s) novedad(es) que has tenido con la entrega de tu producto y la atenderemos cuanto antes.
+              Para eso, ayudanos con la siguiente información:</p>
+            <div class="con space_up">
+              <mat-form-field class="demo-full-width">
+                <input matInput formControlName="cliente" placeholder="Ingresa el número de cédula">
+              </mat-form-field>
+              <mat-error>
+                <span *ngIf="!user.get('cliente').valid && user.get('cliente').touched">Ingrese un # de cédula
+                  valido</span>
+              </mat-error>
+              <mat-form-field class="demo-full-width">
+                <input matInput formControlName="email" placeholder="Ingresa tu email">
+              </mat-form-field>
+              <mat-error>
+                <span *ngIf="!user.get('email').valid && user.get('email').touched">Ingrese un email válido</span>
+              </mat-error>
+              <mat-form-field class="demo-full-width">
+                <input matInput formControlName="celular" placeholder="Ingresa tu # de celular">
+              </mat-form-field>
+              <mat-error>
+                <span *ngIf="!user.get('celular').valid && user.get('celular').touched">Ingrese un # de celular válido</span>
+              </mat-error>
+              <mat-form-field>
+                <mat-label>Documento de compra:</mat-label>
+                <select matNativeControl formControlName="tipo_documento_compra" class="pad_selects">
+                  <option value="num_entrega">Número de entrega</option>
+                  <option value="num_factura">Número de factura</option>
+                  <!--<option value="mercedes">Mercedes</option>
+                                      <option value="audi">Audi</option>-->
+                </select>
+              </mat-form-field>
+              <mat-error>
+                <span *ngIf="!user.get('tipo_documento_compra').valid && user.get('tipo_documento_compra').touched">Seleccione
+                  un tipo de documento</span>
+              </mat-error>
+              <mat-form-field class="demo-full-width">
+                <input matInput formControlName="num_pedido" placeholder="Número de documento">
+              </mat-form-field>
+              <mat-error>
+                <span *ngIf="!user.get('num_pedido').valid && user.get('num_pedido').touched">Ingrese un número de
+                  documento valido</span>
+              </mat-error>
+            </div>
           </div>
         </div>
         <div class="child2">
@@ -60,22 +74,38 @@
             <span class="numberstep">2</span>
           </div>
           <div class="content">
-            <span>Puedes ingresar varios items separando con comas la información</span><br>
-            <mat-form-field class="demo-full-width">
-              <input matInput formControlName="codigo_producto" placeholder="Código">
-            </mat-form-field>
-            <mat-form-field class="demo-full-width">
-              <input matInput formControlName="tipo_novedad" placeholder="Tipo de novedad">
-            </mat-form-field>
-            <mat-form-field class="demo-full-width">
-              <input matInput formControlName="descripcion_producto" placeholder="Descripción Producto">
-            </mat-form-field>
-            <mat-form-field class="demo-full-width">
-              <input matInput formControlName="cantidad_comprada" placeholder="Cantidad comprada">
-            </mat-form-field>
-            <mat-form-field class="demo-full-width">
-              <input matInput formControlName="cantidad_novedad" placeholder="Cantidad novedad">
-            </mat-form-field>
+            <p>Puedes ingresar varios items separando con comas la información</p>
+            <div class="con space_up">
+              <mat-form-field class="demo-full-width">
+                <input matInput formControlName="codigo_producto" placeholder="Código">
+              </mat-form-field>
+              <!--<mat-form-field class="demo-full-width">
+                        <input matInput formControlName="tipo_novedad" placeholder="Tipo de novedad">
+                      </mat-form-field>-->
+              <mat-form-field>
+                <mat-label>Tipo de novedad</mat-label>
+                <select matNativeControl formControlName="tipo_documento_compra" class="pad_selects">
+                  <option value="retraso_entrega">Retraso de entrega</option>
+                  <option value="pedido_incompleto">Pedido incompleto</option>
+                  <option value="otro">Otras novedades</option>
+                </select>
+              </mat-form-field>
+
+              <mat-form-field class="demo-full-width">
+                <input matInput formControlName="descripcion_producto" placeholder="Descripción Producto">
+              </mat-form-field>
+              <mat-form-field class="demo-full-width">
+                <input matInput formControlName="cantidad_comprada" placeholder="Cantidad comprada">
+              </mat-form-field>
+              <mat-form-field class="demo-full-width">
+                <input matInput formControlName="cantidad_novedad" placeholder="Cantidad novedad">
+              </mat-form-field>
+              <p class="space_down">Comentarios adicionales</p>
+              <mat-form-field class="demo-full-width">
+                <textarea matInput matTextareaAutosize matAutosizeMinRows=3 matAutosizeMaxRows=20 formControlName="observaciones"
+                  placeholder="Comentarios"></textarea>
+              </mat-form-field>
+            </div>
           </div>
         </div>
       </div>
@@ -86,7 +116,8 @@
           </div>
           <div class="content">
             <p class="space_down">En caso que aplique, ayudanos a incluir fotos o videos, esto nos ayudará mucho a entender y asi poder darte un mejor servicio.</p>
-            <input type="file" #fileInput name="upload" multiple id="uploadFile" aria-describedby="inputGroupFileAddon01">
+            <label class="space_up ital">(Extensiones permitidas: jpeg, gif, png, webm, mp4, pdf - Peso máximo 5 MB)</label>
+            <input class="space_up" type="file" #fileInput name="upload" multiple id="uploadFile" aria-describedby="inputGroupFileAddon01">
           </div>
         </div>
         <div class="child2">
